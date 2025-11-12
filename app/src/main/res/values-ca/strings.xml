@@ -402,7 +402,7 @@
     <string name="nc_server_maintenance">Si us plau, porteu el vostre %1$s cap a manteniment</string>
     <string name="nc_server_not_installed">Si us plau, acabeu la vostra instal·lació %1$s</string>
     <string name="nc_server_testing_connection">S\'està comprovant la connexió</string>
-    <string name="nc_server_unsupported">El servidor no té instal·lada l\'aplicació Talk</string>
+    <string name="nc_server_unsupported">El servidor no té instal·lada l\'aplicació Walk</string>
     <string name="nc_server_url">Adreça del servidor https://…</string>
     <string name="nc_server_version">%1$s només funciona amb %2$s 13 i endavant</string>
     <string name="nc_set_new_password">Estableix una contrasenya nova</string>
@@ -418,12 +418,14 @@
     <string name="nc_settings_incognito_keyboard_desc">Indica al teclat que desactivi l\'aprenentatge personalitzat (sense garanties)</string>
     <string name="nc_settings_incognito_keyboard_title">Teclat d\'incògnit</string>
     <string name="nc_settings_no_ringtone">Sense so</string>
-    <string name="nc_settings_no_talk_installed">L\'aplicació Talk no està instal·lada al servidor amb el qual heu intentat autenticar-vos</string>
+    <string name="nc_settings_no_talk_installed">L\'aplicació Walk no està instal·lada al servidor amb el qual heu
+        intentat autenticar-vos</string>
     <string name="nc_settings_notification_sounds_post_oreo">Notificacions</string>
     <string name="nc_settings_notifications_declined">Les notificacions s\'han rebutjat</string>
     <string name="nc_settings_notifications_granted">S\'han concedit les notificacions</string>
     <string name="nc_settings_other_notifications_ringtone">Missatges</string>
-    <string name="nc_settings_phone_book_integration_desc">Fes coincidir els contactes basats en el número de telèfon per a integrar la drecera de Talk a l\'aplicació de contactes del sistema</string>
+    <string name="nc_settings_phone_book_integration_desc">Fes coincidir els contactes basats en el número de telèfon
+        per a integrar la drecera de Walk a l\'aplicació de contactes del sistema</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_429">Error 429 massa sol·licituds</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">Podeu establir el vostre número de telèfon perquè altres usuaris puguin trobar-vos</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">Introduïu el número de telèfon</string>
@@ -556,7 +558,8 @@
     <string name="scope_federated_title">Federat</string>
     <string name="scope_local_description">Només visible per a les persones d\'aquesta instància i convidats</string>
     <string name="scope_local_title">Local</string>
-    <string name="scope_private_description">Només visible per a les persones que coincideixen mitjançant la integració del número de telèfon a través de Talk al mòbil</string>
+    <string name="scope_private_description">Només visible per a les persones que coincideixen mitjançant la
+        integració del número de telèfon a través de Walk al mòbil</string>
     <string name="scope_private_title">Privat</string>
     <string name="scope_published_description">Sincronitza amb servidors de confiança i amb la llibreta d\'adreces global i pública</string>
     <string name="scope_published_title">Publicat</string>

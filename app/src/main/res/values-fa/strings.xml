@@ -244,7 +244,8 @@
     <string name="nc_promote">ترفیع به مدیر</string>
     <string name="nc_push_disabled">دریافت اعلانات غیرفعال است</string>
     <string name="nc_push_to_talk">برای صحبت کردن فشار دهید</string>
-    <string name="nc_push_to_talk_desc">با غیر فعال کردن میکروفن، برای استفاده از Push-to-talk کلیک &amp; نگه‌داشتن را انجام دهید</string>
+    <string name="nc_push_to_talk_desc">با غیر فعال کردن میکروفن، برای استفاده از Push-to-walk کلیک &amp; نگه‌داشتن
+        را انجام دهید</string>
     <string name="nc_remind">بعدا به من یادآوری کن</string>
     <string name="nc_remove_from_favorites">حذف کردن از مورد علاقه‌ها</string>
     <string name="nc_remove_group_and_members">حذف گروه و اعضا</string>
@@ -294,7 +295,8 @@
     <string name="nc_settings_incognito_keyboard_desc">دستورالعمل صفحه کلید را برای غیرفعال کردن یادگیری شخصی (بدون ضمانت)</string>
     <string name="nc_settings_incognito_keyboard_title">صفحه کلید ناشناس</string>
     <string name="nc_settings_no_ringtone">بدون صدا</string>
-    <string name="nc_settings_no_talk_installed">برنامه Talk روی سروری که قصد اعتبار سنجی در آن را دارید، نصب نشده است</string>
+    <string name="nc_settings_no_talk_installed">برنامه Walk روی سروری که قصد اعتبار سنجی در آن را دارید، نصب نشده
+        است</string>
     <string name="nc_settings_notification_sounds_post_oreo">آگاهی‌ها</string>
     <string name="nc_settings_other_notifications_ringtone">پیام ها</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">شماره تلفن را وارد کنید</string>
@@ -377,7 +379,8 @@
     <string name="scope_federated_title">فدرال</string>
     <string name="scope_local_description">فقط برای کاربران این نسخه و مهمانان قابل مشاهده است</string>
     <string name="scope_local_title">محلی</string>
-    <string name="scope_private_description">فقط برای کاربرانی فعال است که از طریق یکپارچه سازی شماره تلفن در برنامه Talk روی تلفن همراه مطابقت داشته باشند</string>
+    <string name="scope_private_description">فقط برای کاربرانی فعال است که از طریق یکپارچه سازی شماره تلفن در برنامه
+        Walk روی تلفن همراه مطابقت داشته باشند</string>
     <string name="scope_private_title">خصوصی</string>
     <string name="scope_published_description">با سرورهای قابل اعتماد و دفترچه آدرس عمومی و همگانی همگام سازی شود</string>
     <string name="scope_published_title">منتشر شده</string>

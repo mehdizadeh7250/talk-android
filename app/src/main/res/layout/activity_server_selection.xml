@@ -31,7 +31,7 @@
             android:layout_marginBottom="@dimen/standard_margin"
             android:contentDescription="@string/nc_app_product_name"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_logo" />
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="wrap_content"

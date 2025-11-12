@@ -277,6 +277,44 @@ class PushUtils {
                         )
 
                         Log.d(TAG, "pushToken successfully registered at pushproxy.")
+                        registerDeviceWithPushProxy(ncApi, user)
+                    } catch (e: IOException) {
+                        Log.e(TAG, "IOException while updating user", e)
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.e(TAG, "Failed to register device with pushproxy", e)
+                    eventBus!!.post(EventStatus(user.id!!, EventStatus.EventType.PUSH_REGISTRATION, false))
+                }
+
+                override fun onComplete() {
+                    // unused atm
+                }
+            })
+    }
+    private fun registerDeviceWithPushProxy(ncApi: NcApi, user: User) {
+        val pushToken = appPreferences.pushToken
+        val proxyMap: MutableMap<String, String?> = HashMap()
+        proxyMap["username"]= user.username
+        proxyMap["fcmToken"]= pushToken
+        ncApi.registerFcmToken("Bearer supersecrettoken","https://push.kloudia.online/register-token", proxyMap)
+            .subscribeOn(Schedulers.io())
+            .subscribe(object : Observer<Unit> {
+                override fun onSubscribe(d: Disposable) {
+                    // unused atm
+                }
+
+                override fun onNext(t: Unit) {
+                    try {
+                        arbitraryStorageManager.storeStorageSetting(
+                            getIdForUser(user),
+                            LATEST_PUSH_REGISTRATION_AT_PUSH_PROXY,
+                            System.currentTimeMillis().toString(),
+                            ""
+                        )
+
+                        Log.d(TAG, "pushToken successfully registered at pushproxy.")
                         updatePushStateForUser(proxyMap, user)
                     } catch (e: IOException) {
                         Log.e(TAG, "IOException while updating user", e)
@@ -293,7 +331,6 @@ class PushUtils {
                 }
             })
     }
-
     @Throws(IOException::class)
     private fun updatePushStateForUser(proxyMap: Map<String, String?>, user: User) {
         val pushConfigurationState = PushConfigurationState()

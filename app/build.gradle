@@ -53,7 +53,7 @@ android {
                 dimension "default"
             }
             gplay {
-                applicationId 'com.nextcloud.talk2'
+                applicationId 'com.nextcloud.talk2.newDomain'
                 dimension "default"
             }
             qa {
@@ -177,12 +177,12 @@ ext {
     mockitoKotlinVersion = "6.0.0"
 }
 
-configurations.configureEach {
-    exclude group: 'com.google.firebase', module: 'firebase-core'
-    exclude group: 'com.google.firebase', module: 'firebase-analytics'
-    exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
-    exclude group: 'org.jetbrains', module: 'annotations-java5' // via prism4j, already using annotations explicitly
-}
+//configurations.configureEach {
+//    exclude group: 'com.google.firebase', module: 'firebase-core'
+//    exclude group: 'com.google.firebase', module: 'firebase-analytics'
+//    exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
+//    exclude group: 'org.jetbrains', module: 'annotations-java5' // via prism4j, already using annotations explicitly
+//}
 
 dependencies {
     implementation "androidx.room:room-testing-android:${roomVersion}"
@@ -416,3 +416,5 @@ detekt {
 ksp {
     arg('room.schemaLocation', "$projectDir/schemas")
 }
+
+apply plugin: 'com.google.gms.google-services'

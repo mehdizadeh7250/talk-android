@@ -646,4 +646,11 @@ public interface NcApi {
     @DELETE
     Observable<GenericOverall> rejectInvitation(@Header("Authorization") String authorization,
                                                 @Url String url);
+
+    @POST
+    Observable<Unit> registerFcmToken(
+        @Header("Authorization") String authorization,
+        @Url String url,
+        @Body Map<String, String> body
+                                               );
 }
