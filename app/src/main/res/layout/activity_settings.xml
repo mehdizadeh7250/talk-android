@@ -616,7 +616,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/standard_half_margin"
-                            android:hint="@string/nc_settings_typing_status_hpb_description"/>
+                            android:text="@string/nc_settings_typing_status_hpb_description"/>
                     </LinearLayout>
 
                     <com.google.android.material.materialswitch.MaterialSwitch
@@ -681,6 +681,12 @@
                         android:textSize="@dimen/headline_text_size"/>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/settings_proxy_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -796,6 +802,7 @@
                         android:gravity="center_vertical"
                         android:clickable="false"/>
                 </LinearLayout>
+            </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

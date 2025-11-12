@@ -38,6 +38,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
@@ -68,8 +69,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.nextcloud.android.common.ui.theme.utils.ColorRole
 import com.nextcloud.talk.R
+import com.nextcloud.talk.account.BrowserLoginActivity
 import com.nextcloud.talk.account.ServerSelectionActivity
-import com.nextcloud.talk.account.WebViewLoginActivity
 import com.nextcloud.talk.activities.BaseActivity
 import com.nextcloud.talk.activities.CallActivity
 import com.nextcloud.talk.activities.MainActivity
@@ -106,14 +107,13 @@ import com.nextcloud.talk.messagesearch.MessageSearchHelper
 import com.nextcloud.talk.messagesearch.MessageSearchHelper.MessageSearchResults
 import com.nextcloud.talk.models.domain.ConversationModel
 import com.nextcloud.talk.models.json.conversations.ConversationEnums
-import com.nextcloud.talk.models.json.conversations.RoomsOverall
 import com.nextcloud.talk.models.json.converters.EnumActorTypeConverter
 import com.nextcloud.talk.models.json.participants.Participant
 import com.nextcloud.talk.repositories.unifiedsearch.UnifiedSearchRepository
 import com.nextcloud.talk.settings.SettingsActivity
 import com.nextcloud.talk.threadsoverview.ThreadsOverviewActivity
 import com.nextcloud.talk.ui.BackgroundVoiceMessageCard
-import com.nextcloud.talk.ui.dialog.ChooseAccountDialogFragment
+import com.nextcloud.talk.ui.dialog.ChooseAccountDialogCompose
 import com.nextcloud.talk.ui.dialog.ChooseAccountShareToDialogFragment
 import com.nextcloud.talk.ui.dialog.ConversationsListBottomDialog
 import com.nextcloud.talk.ui.dialog.FilterConversationFragment
@@ -447,6 +447,38 @@ class ConversationsListActivity :
         }
 
         lifecycleScope.launch {
+            conversationsListViewModel.openConversationsState.collect { state ->
+                when (state) {
+                    is ConversationsListViewModel.OpenConversationsUiState.Success -> {
+                        val openConversationItems: MutableList<AbstractFlexibleItem<*>> = ArrayList()
+                        for (conversation in state.conversations) {
+                            val headerTitle = resources!!.getString(R.string.openConversations)
+                            var genericTextHeaderItem: GenericTextHeaderItem
+                            if (!callHeaderItems.containsKey(headerTitle)) {
+                                genericTextHeaderItem = GenericTextHeaderItem(headerTitle, viewThemeUtils)
+                                callHeaderItems[headerTitle] = genericTextHeaderItem
+                            }
+                            val conversationItem = ConversationItem(
+                                ConversationModel.mapToConversationModel(conversation, currentUser!!),
+                                currentUser!!,
+                                this@ConversationsListActivity,
+                                callHeaderItems[headerTitle],
+                                viewThemeUtils
+                            )
+                            openConversationItems.add(conversationItem)
+                        }
+                        searchableConversationItems.addAll(openConversationItems)
+                    }
+                    is ConversationsListViewModel.OpenConversationsUiState.Error -> {
+                        handleHttpExceptions(state.exception)
+                    }
+
+                    else -> {}
+                }
+            }
+        }
+
+        lifecycleScope.launch {
             conversationsListViewModel.getRoomsFlow
                 .onEach { list ->
                     setConversationList(list)
@@ -628,12 +660,7 @@ class ConversationsListActivity :
 
         Handler().postDelayed({ checkToShowUnreadBubble() }, UNREAD_BUBBLE_DELAY.toLong())
 
-        // Fetch Open Conversations
-        val apiVersion = ApiUtils.getConversationApiVersion(
-            currentUser!!,
-            intArrayOf(ApiUtils.API_V4, ApiUtils.API_V3, 1)
-        )
-        fetchOpenConversations(apiVersion)
+        fetchOpenConversations()
     }
 
     fun applyFilter() {
@@ -653,10 +680,9 @@ class ConversationsListActivity :
     }
 
     private fun isFutureEvent(conversation: ConversationModel): Boolean {
-        if (!conversation.objectId.contains("#")) {
-            return false
-        }
-        val eventTimeStart = conversation.objectId.split("#")[0].toLong()
+        val eventTimeStart = conversation.objectId
+            .substringBefore("#")
+            .toLongOrNull() ?: return false
         val currentTimeStampInSeconds = System.currentTimeMillis() / LONG_1000
         val sixteenHoursAfterTimeStamp = (eventTimeStart - currentTimeStampInSeconds) > SIXTEEN_HOURS_IN_SECONDS
         return conversation.objectType == ConversationEnums.ObjectType.EVENT && sixteenHoursAfterTimeStamp
@@ -796,6 +822,15 @@ class ConversationsListActivity :
         } else {
             Log.e(TAG, "currentUser was null in loadUserAvatar")
             Snackbar.make(binding.root, R.string.nc_common_error_sorry, Snackbar.LENGTH_LONG).show()
+        }
+    }
+
+    private fun showChooseAccountDialog() {
+        binding.genericComposeView.apply {
+            val shouldDismiss = mutableStateOf(false)
+            setContent {
+                ChooseAccountDialogCompose().GetChooseAccountDialog(shouldDismiss, this@ConversationsListActivity)
+            }
         }
     }
 
@@ -1150,8 +1185,7 @@ class ConversationsListActivity :
 
             if (resources!!.getBoolean(R.bool.multiaccount_support) && userManager.users.blockingGet().size > 1) {
                 dialogBuilder.setPositiveButton(R.string.nc_switch_account) { _, _ ->
-                    val newFragment: DialogFragment = ChooseAccountDialogFragment.newInstance()
-                    newFragment.show(supportFragmentManager, ChooseAccountDialogFragment.TAG)
+                    showChooseAccountDialog()
                 }
             }
 
@@ -1198,48 +1232,10 @@ class ConversationsListActivity :
         }
     }
 
-    private fun fetchOpenConversations(apiVersion: Int) {
+    private fun fetchOpenConversations() {
         searchableConversationItems.clear()
         searchableConversationItems.addAll(conversationItemsWithHeader)
-        if (hasSpreedFeatureCapability(
-                currentUser?.capabilities?.spreedCapability,
-                SpreedFeatures.LISTABLE_ROOMS
-            )
-        ) {
-            val openConversationItems: MutableList<AbstractFlexibleItem<*>> = ArrayList()
-            openConversationsQueryDisposable = ncApi.getOpenConversations(
-                credentials,
-                ApiUtils.getUrlForOpenConversations(apiVersion, currentUser!!.baseUrl!!),
-                ""
-            )
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ (ocs): RoomsOverall ->
-                    for (conversation in ocs!!.data!!) {
-                        val headerTitle = resources!!.getString(R.string.openConversations)
-                        var genericTextHeaderItem: GenericTextHeaderItem
-                        if (!callHeaderItems.containsKey(headerTitle)) {
-                            genericTextHeaderItem = GenericTextHeaderItem(headerTitle, viewThemeUtils)
-                            callHeaderItems[headerTitle] = genericTextHeaderItem
-                        }
-                        val conversationItem = ConversationItem(
-                            ConversationModel.mapToConversationModel(conversation, currentUser!!),
-                            currentUser!!,
-                            this,
-                            callHeaderItems[headerTitle],
-                            viewThemeUtils
-                        )
-                        openConversationItems.add(conversationItem)
-                    }
-                    searchableConversationItems.addAll(openConversationItems)
-                }, { throwable: Throwable ->
-                    Log.e(TAG, "fetchData - getRooms - ERROR", throwable)
-                    handleHttpExceptions(throwable)
-                    dispose(openConversationsQueryDisposable)
-                }) { dispose(openConversationsQueryDisposable) }
-        } else {
-            Log.d(TAG, "no open conversations fetched because of missing capability")
-        }
+        conversationsListViewModel.fetchOpenConversations()
     }
 
     private fun fetchUsers(query: String = "") {
@@ -1308,8 +1304,7 @@ class ConversationsListActivity :
 
         binding.switchAccountButton.setOnClickListener {
             if (resources != null && resources!!.getBoolean(R.bool.multiaccount_support)) {
-                val newFragment: DialogFragment = ChooseAccountDialogFragment.newInstance()
-                newFragment.show(supportFragmentManager, ChooseAccountDialogFragment.TAG)
+                showChooseAccountDialog()
             } else {
                 val intent = Intent(context, SettingsActivity::class.java)
                 startActivity(intent)
@@ -1530,7 +1525,7 @@ class ConversationsListActivity :
             when (item) {
                 is MessageResultItem -> {
                     val token = item.messageEntry.conversationToken
-                    val conversationName = (
+                    (
                         conversationItems.first {
                             (it is ConversationItem) && it.model.token == token
                         } as ConversationItem
@@ -1994,7 +1989,7 @@ class ConversationsListActivity :
                     deleteUserAndRestartApp()
                 }
                 .setNegativeButton(R.string.nc_settings_reauthorize) { _, _ ->
-                    val intent = Intent(context, WebViewLoginActivity::class.java)
+                    val intent = Intent(context, BrowserLoginActivity::class.java)
                     val bundle = Bundle()
                     bundle.putString(BundleKeys.KEY_BASE_URL, currentUser!!.baseUrl!!)
                     bundle.putBoolean(BundleKeys.KEY_REAUTHORIZE_ACCOUNT, true)
@@ -2081,8 +2076,7 @@ class ConversationsListActivity :
 
             if (resources!!.getBoolean(R.bool.multiaccount_support) && userManager.users.blockingGet().size > 1) {
                 dialogBuilder.setNegativeButton(R.string.nc_switch_account) { _, _ ->
-                    val newFragment: DialogFragment = ChooseAccountDialogFragment.newInstance()
-                    newFragment.show(supportFragmentManager, ChooseAccountDialogFragment.TAG)
+                    showChooseAccountDialog()
                 }
             }
 
@@ -2125,8 +2119,7 @@ class ConversationsListActivity :
 
             if (resources!!.getBoolean(R.bool.multiaccount_support) && userManager.users.blockingGet().size > 1) {
                 dialogBuilder.setNegativeButton(R.string.nc_switch_account) { _, _ ->
-                    val newFragment: DialogFragment = ChooseAccountDialogFragment.newInstance()
-                    newFragment.show(supportFragmentManager, ChooseAccountDialogFragment.TAG)
+                    showChooseAccountDialog()
                 }
             }
 

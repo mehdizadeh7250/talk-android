@@ -131,6 +131,8 @@
     <string name="nc_call_incoming">ДОЛАЗНО</string>
     <string name="nc_call_name">Назив разговора</string>
     <string name="nc_call_notifications">Обавештења позива</string>
+    <string name="nc_call_ongoing_notification_content">Тапните да се вратите у позив.</string>
+    <string name="nc_call_ongoing_notification_default_title">Позив је у току</string>
     <string name="nc_call_raised_hand">%1$s је подигао руку</string>
     <string name="nc_call_reconnecting">Поновно повезивање ...</string>
     <string name="nc_call_ringing">ЗВОНИ</string>
@@ -294,7 +296,7 @@
     <string name="nc_guest_access_resend_invitations_successful">Позивнице су поново послате.</string>
     <string name="nc_guest_access_share_link">Дели линк разговора</string>
     <string name="nc_hint_enter_a_message">Unesite poruku …</string>
-    <string name="nc_ignore_battery_optimization_dialog_text">Оптимизација батерије се не игнорише. Ово би требало да се промени тако да би обавештења могла да функционишу у позадини! Молимо вас да кликнете OK и изаберете „Све апликације” -> %1$s -> Не оптимизуј</string>
+    <string name="nc_ignore_battery_optimization_dialog_text">Оптимизација батерије се не игнорише. Ово би требало да се промени ако желите да обавештења раде у позадини! МОчлимо вас да кликнете на OK и изаберете „Све апикације” -> %1$s па затим „Не оптимизуј” или „дозвои упозтребу у позадини -> Неограничено”.</string>
     <string name="nc_ignore_battery_optimization_dialog_title">Игнориши оптимизацију батерије</string>
     <string name="nc_important_conversation">Битан разговор</string>
     <string name="nc_important_conversation_desc">Кориснички статус „Не узнемиравај” се игнорише за важне разговоре</string>
@@ -567,6 +569,7 @@
     <string name="open_thread">Иди на нит</string>
     <string name="play_pause_voice_message">Пусти/паузирај гласовну поруку</string>
     <string name="playback_speed_control">Контрола брзине репродукције</string>
+    <string name="please_continue_the_login_process_in_the_browser">Молимо вас да пријављивање настивете у прегледачу</string>
     <string name="polls_add_option">Додај ставку</string>
     <string name="polls_edit_vote">Уреди гласање</string>
     <string name="polls_end_poll">Заврши гласање</string>
@@ -682,6 +685,8 @@
     <string name="translation_error_title">Превођење није успело</string>
     <string name="translation_from">Од</string>
     <string name="translation_to">За</string>
+    <string name="turn_off_background_blur">Искључи замућење позадине</string>
+    <string name="turn_on_background_blur">Укључи замућење позадине</string>
     <string name="typing_1_other">and и још 1 куцају…</string>
     <string name="typing_are_typing">куцају...</string>
     <string name="typing_is_typing">куца...</string>

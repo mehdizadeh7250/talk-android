@@ -114,6 +114,7 @@
     <string name="nc_call_incoming">INNKOMMENDE</string>
     <string name="nc_call_name">Samtalenavn</string>
     <string name="nc_call_notifications">Varsler om anrop</string>
+    <string name="nc_call_ongoing_notification_default_title">Samtale pågår</string>
     <string name="nc_call_raised_hand">%1$s rekte opp hånden</string>
     <string name="nc_call_reconnecting">Kobler til igjen...</string>
     <string name="nc_call_ringing">RINGER</string>
@@ -272,7 +273,6 @@
     <string name="nc_guest_access_resend_invitations_successful">Invitasjoner ble sendt ut igjen.</string>
     <string name="nc_guest_access_share_link">Del samtalekobling</string>
     <string name="nc_hint_enter_a_message">Enter a message …</string>
-    <string name="nc_ignore_battery_optimization_dialog_text">Batterioptimalisering ignoreres ikke. Dette bør endres for å sikre at varsler fungerer i bakgrunnen! Klikk OK og velg \"Alle apper\" -> %1$s -> Ikke optimaliser</string>
     <string name="nc_ignore_battery_optimization_dialog_title">Ignorer batterioptimalisering</string>
     <string name="nc_important_conversation">Viktig samtale</string>
     <string name="nc_invitations">Invitasjoner</string>

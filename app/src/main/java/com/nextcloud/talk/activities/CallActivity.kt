@@ -1,6 +1,7 @@
 /*
  * Nextcloud Talk - Android Client
  *
+ * SPDX-FileCopyrightText: 2025 Julius Linus <juliuslinus1@gmail.com>
  * SPDX-FileCopyrightText: 2023 Marcel Hibbe <dev@mhibbe.de>
  * SPDX-FileCopyrightText: 2022 Tim Krüger <t@timkrueger.me>
  * SPDX-FileCopyrightText: 2017-2018 Mario Danic <mario@lovelyhq.com>
@@ -75,6 +76,9 @@ import com.nextcloud.talk.call.MessageSenderNoMcu
 import com.nextcloud.talk.call.MutableLocalCallParticipantModel
 import com.nextcloud.talk.call.ReactionAnimator
 import com.nextcloud.talk.call.components.ParticipantGrid
+import com.nextcloud.talk.camera.BackgroundBlurFrameProcessor
+import com.nextcloud.talk.camera.BlurBackgroundViewModel
+import com.nextcloud.talk.camera.BlurBackgroundViewModel.BackgroundBlurOn
 import com.nextcloud.talk.chat.ChatActivity
 import com.nextcloud.talk.data.user.model.User
 import com.nextcloud.talk.databinding.CallActivityBinding
@@ -96,6 +100,7 @@ import com.nextcloud.talk.models.json.signaling.settings.SignalingSettingsOveral
 import com.nextcloud.talk.raisehand.viewmodel.RaiseHandViewModel
 import com.nextcloud.talk.raisehand.viewmodel.RaiseHandViewModel.LoweredHandState
 import com.nextcloud.talk.raisehand.viewmodel.RaiseHandViewModel.RaisedHandState
+import com.nextcloud.talk.services.CallForegroundService
 import com.nextcloud.talk.signaling.SignalingMessageReceiver
 import com.nextcloud.talk.signaling.SignalingMessageReceiver.CallParticipantMessageListener
 import com.nextcloud.talk.signaling.SignalingMessageReceiver.LocalParticipantMessageListener
@@ -187,7 +192,7 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 
 @AutoInjector(NextcloudTalkApplication::class)
-@Suppress("TooManyFunctions")
+@Suppress("TooManyFunctions", "ReturnCount", "LargeClass")
 class CallActivity : CallBaseActivity() {
     @JvmField
     @Inject
@@ -210,6 +215,7 @@ class CallActivity : CallBaseActivity() {
     var audioManager: WebRtcAudioManager? = null
     var callRecordingViewModel: CallRecordingViewModel? = null
     var raiseHandViewModel: RaiseHandViewModel? = null
+    val blurBackgroundViewModel: BlurBackgroundViewModel = BlurBackgroundViewModel()
     private var mReceiver: BroadcastReceiver? = null
     private var peerConnectionFactory: PeerConnectionFactory? = null
     private var audioConstraints: MediaConstraints? = null
@@ -234,7 +240,7 @@ class CallActivity : CallBaseActivity() {
     private val peerConnectionWrapperList: MutableList<PeerConnectionWrapper> = ArrayList()
     private var videoOn = false
     private var microphoneOn = false
-    private var isVoiceOnlyCall = false
+    var isVoiceOnlyCall = false
     private var isCallWithoutNotification = false
     private var isIncomingCallFromNotification = false
     private val callControlHandler = Handler()
@@ -382,7 +388,6 @@ class CallActivity : CallBaseActivity() {
         setContentView(binding!!.root)
         hideNavigationIfNoPipAvailable()
         processExtras(intent.extras!!)
-
         conversationUser = currentUserProvider.currentUser.blockingGet()
 
         credentials = ApiUtils.getCredentials(conversationUser!!.username, conversationUser!!.token)
@@ -395,6 +400,8 @@ class CallActivity : CallBaseActivity() {
 
         initRaiseHandViewModel()
         initCallRecordingViewModel(intent.extras!!.getInt(KEY_RECORDING_STATE))
+        initBackgroundBlurViewModel()
+
         initClickListeners(isModerator, isOneToOneConversation)
         binding!!.microphoneButton.setOnTouchListener(MicrophoneButtonTouchListener())
         pulseAnimation = PulseAnimation.create().with(binding!!.microphoneButton)
@@ -484,6 +491,26 @@ class CallActivity : CallBaseActivity() {
                     peerConnectionWrapper.raiseHand(raised)
                 }
             }
+        }
+    }
+
+    private fun initBackgroundBlurViewModel() {
+        blurBackgroundViewModel.viewState.observe(this) { state ->
+            val frontFacing = isCameraFrontFacing(cameraEnumerator)
+            if (frontFacing == null) {
+                Log.e(TAG, "Camera not found")
+                return@observe
+            }
+
+            val isOn = state == BackgroundBlurOn
+
+            val processor = if (isOn) {
+                BackgroundBlurFrameProcessor(context)
+            } else {
+                null
+            }
+
+            videoSource?.setVideoProcessor(processor)
         }
     }
 
@@ -1011,6 +1038,7 @@ class CallActivity : CallBaseActivity() {
         checkRecordingConsentAndInitiateCall()
 
         if (permissionUtil!!.isMicrophonePermissionGranted()) {
+            CallForegroundService.start(applicationContext, conversationName, intent.extras)
             if (!microphoneOn) {
                 onMicrophoneClick()
             }
@@ -1106,6 +1134,7 @@ class CallActivity : CallBaseActivity() {
                 rootEglBase!!.eglBaseContext
             )
             videoSource = peerConnectionFactory!!.createVideoSource(false)
+
             videoCapturer!!.initialize(surfaceTextureHelper, applicationContext, videoSource!!.capturerObserver)
         }
         localVideoTrack = peerConnectionFactory!!.createVideoTrack("NCv0", videoSource)
@@ -1183,6 +1212,30 @@ class CallActivity : CallBaseActivity() {
                 }
             }
         }
+        return null
+    }
+
+    private fun isCameraFrontFacing(enumerator: CameraEnumerator?): Boolean? {
+        if (enumerator == null) {
+            return false
+        }
+
+        val deviceNames = enumerator.deviceNames
+
+        // First, try to find front facing camera
+        for (deviceName in deviceNames) {
+            if (enumerator.isFrontFacing(deviceName)) {
+                return true
+            }
+        }
+
+        // Front facing camera not found, try something else
+        for (deviceName in deviceNames) {
+            if (!enumerator.isFrontFacing(deviceName)) {
+                return false
+            }
+        }
+
         return null
     }
 
@@ -1272,6 +1325,7 @@ class CallActivity : CallBaseActivity() {
             } else {
                 binding!!.cameraButton.setImageResource(R.drawable.ic_videocam_off_white_24px)
                 binding!!.switchSelfVideoButton.visibility = View.GONE
+                blurBackgroundViewModel.turnOffBlur()
             }
             toggleMedia(videoOn, true)
         } else if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
@@ -1349,6 +1403,10 @@ class CallActivity : CallBaseActivity() {
 
     fun clickRaiseOrLowerHandButton() {
         raiseHandViewModel!!.clickHandButton()
+    }
+
+    fun toggleBackgroundBlur() {
+        blurBackgroundViewModel.toggleBackgroundBlur()
     }
 
     private fun animateCallControls(show: Boolean, startDelay: Long) {
@@ -1460,6 +1518,7 @@ class CallActivity : CallBaseActivity() {
         if (currentCallStatus !== CallStatus.LEAVING) {
             hangup(true, false)
         }
+        CallForegroundService.stop(applicationContext)
         powerManagerUtils!!.updatePhoneState(PowerManagerUtils.PhoneState.IDLE)
         super.onDestroy()
     }

@@ -80,7 +80,7 @@
     <string name="load_more_results">Weitere Ergebnisse laden</string>
     <string name="local_time">Ortszeit: %1$s</string>
     <string name="location_permission_denied">Standort-Berechtigung abgelehnt</string>
-    <string name="location_permission_denied_msg">Dies bitte in in App-Einstellungen aktivieren</string>
+    <string name="location_permission_denied_msg">Dies bitte in den App-Einstellungen aktivieren</string>
     <string name="location_services_disabled">Standortdienste deaktiviert</string>
     <string name="location_services_disabled_msg">Bitte die Standortdienste (GPS) aktivieren, um diese Funktion zu nutzen</string>
     <string name="lock_conversation">Unterhaltung sperren</string>
@@ -131,6 +131,8 @@
     <string name="nc_call_incoming">EINGEHEND</string>
     <string name="nc_call_name">Name der Unterhaltung</string>
     <string name="nc_call_notifications">Anrufbenachrichtigungen</string>
+    <string name="nc_call_ongoing_notification_content">Tippen um zum Anruf zurückzukehren</string>
+    <string name="nc_call_ongoing_notification_default_title">Anruf ist aktiv</string>
     <string name="nc_call_raised_hand">%1$s hat die Hand gehoben</string>
     <string name="nc_call_reconnecting">Verbinde erneut …</string>
     <string name="nc_call_ringing">KLINGELT</string>
@@ -294,7 +296,7 @@
     <string name="nc_guest_access_resend_invitations_successful">Es wurden erneut Einladungen verschickt.</string>
     <string name="nc_guest_access_share_link">Unterhaltungs-Link teilen</string>
     <string name="nc_hint_enter_a_message">Eine Nachricht eingeben …</string>
-    <string name="nc_ignore_battery_optimization_dialog_text">Die Batterieoptimierung ist aktiviert. Dies sollte geändert werden, um sicherzustellen, dass Benachrichtigungen im Hintergrund funktionieren! Bitte klicken Sie auf OK und wählen Sie \"Alle Apps\" -> %1$s -> Nicht optimieren</string>
+    <string name="nc_ignore_battery_optimization_dialog_text">Die Akkuoptimierung wird nicht ignoriert. Dies sollte geändert werden, um sicherzustellen, dass Benachrichtigungen im Hintergrund funktionieren! Bitte dazu  auf OK klicken und \"Alle Apps\" wählen -> %1$s und anschließend \"Nicht optimieren\" bzw. \"Hintergrundnutzung zulassen -> Uneingeschränkt\" auswählen.</string>
     <string name="nc_ignore_battery_optimization_dialog_title">Batterieoptimierung ignorieren</string>
     <string name="nc_important_conversation">Wichtige Unterhaltung</string>
     <string name="nc_important_conversation_desc">\"Nicht stören\"-Benutzerstatus wird für wichtige Unterhaltungen ignoriert</string>
@@ -391,7 +393,7 @@
     <string name="nc_push_disabled">Push-Benachrichtigungen sind deaktiviert</string>
     <string name="nc_push_notification_error">Leider ist etwas schief gelaufen, der Fehler ist %1$s</string>
     <string name="nc_push_notification_fetch_error">Leider ist etwas schief gelaufen, die Test-Push-Nachricht kann nicht abgerufen werden</string>
-    <string name="nc_push_notification_message">Die Push-Benachrichtigung wurde gesendet. Sie sollten nun auf diesem Gerät eine Benachrichtigung mit dem Titel „Testen von Push-Benachrichtigungen“ erhalten.</string>
+    <string name="nc_push_notification_message">Die Push-Benachrichtigung wurde gesendet. Sie sollten nun auf diesem Gerät eine Benachrichtigung mit dem Titel \"Testen von Push-Benachrichtigungen\" erhalten.</string>
     <string name="nc_push_to_talk">Funkgerät-Modus</string>
     <string name="nc_push_to_talk_desc">Bei deaktiviertem Mikrofon &amp;drücken. Halten Sie zum Senden die Sprechtaste gedrückt (Funkgerät-Modus)</string>
     <string name="nc_remind">Erinnere mich später</string>
@@ -569,6 +571,7 @@
     <string name="open_thread">Zu Thema gehen</string>
     <string name="play_pause_voice_message">Sprachnachricht wiedergeben/pausieren</string>
     <string name="playback_speed_control">Steuerung der Wiedergabegeschwindigkeit</string>
+    <string name="please_continue_the_login_process_in_the_browser">Bitte den Anmeldeprozess im Browser fortsetzen</string>
     <string name="polls_add_option">Option hinzufügen</string>
     <string name="polls_edit_vote">Abstimmung bearbeiten</string>
     <string name="polls_end_poll">Umfrage beenden</string>
@@ -685,6 +688,8 @@
     <string name="translation_error_title">Übersetzung fehlgeschlagen</string>
     <string name="translation_from">Von</string>
     <string name="translation_to">An</string>
+    <string name="turn_off_background_blur">Hintergrundunschärfe ausschalten</string>
+    <string name="turn_on_background_blur">Hintergrundunschärfe einschalten</string>
     <string name="typing_1_other">und 1 anderer schreibt…</string>
     <string name="typing_are_typing">schreiben…</string>
     <string name="typing_is_typing">schreibt…</string>

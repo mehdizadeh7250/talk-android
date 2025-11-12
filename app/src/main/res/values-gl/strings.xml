@@ -26,7 +26,7 @@
     <string name="busy">Ocupado</string>
     <string name="calendar">Calendario</string>
     <string name="call_more_actions_dialog_headline"> Opcións avanzadas de chamada</string>
-    <string name="call_running_since_one_hour">A chamada leva unha hora en curso.</string>
+    <string name="call_running_since_one_hour">A chamada leva unha hora en proceso.</string>
     <string name="call_without_notification">Chamar sen notificación</string>
     <string name="camera_permission_granted">Concedeuse o permiso para a cámara. Escolla a cámara de novo.</string>
     <string name="cancel_login">Cancelar o acceso</string>
@@ -131,6 +131,8 @@
     <string name="nc_call_incoming">ENTRANTE</string>
     <string name="nc_call_name">Nome da conversa</string>
     <string name="nc_call_notifications">Notificacións de chamadas</string>
+    <string name="nc_call_ongoing_notification_content">Toquea para volver á chamada.</string>
+    <string name="nc_call_ongoing_notification_default_title">Chamada en proceso</string>
     <string name="nc_call_raised_hand">%1$s ergueu a man</string>
     <string name="nc_call_reconnecting">Volvendo conectar…</string>
     <string name="nc_call_ringing">CHAMANDO</string>
@@ -294,7 +296,7 @@
     <string name="nc_guest_access_resend_invitations_successful">Os convites foron enviados de novo.</string>
     <string name="nc_guest_access_share_link">Compartir a ligazón da conversa</string>
     <string name="nc_hint_enter_a_message">Escriba unha mensaxe…</string>
-    <string name="nc_ignore_battery_optimization_dialog_text">Non se ignora a optimización da batería. Isto debería cambiarse para asegurarse de que as notificacións funcionan en segundo plano. Prema en Aceptar e seleccione «Todas as aplicacións» → %1$s → Non optimizar</string>
+    <string name="nc_ignore_battery_optimization_dialog_text">Non se ignora a optimización da batería. Isto debería cambiarse para asegurarse de que as notificacións funcionan en segundo plano. Prema en Aceptar e seleccione «Todas as aplicacións» → %1$s e após «Non optimizar» ou «Permitir o uso en segundo plano → Sen restricións».</string>
     <string name="nc_ignore_battery_optimization_dialog_title">Ignorar a optimización da batería</string>
     <string name="nc_important_conversation">Conversa importante</string>
     <string name="nc_important_conversation_desc">Nas conversas importantes, ignorarase o estado «Non molestar»</string>
@@ -367,7 +369,7 @@
     <string name="nc_notify_me_never">Non notificar nunca</string>
     <string name="nc_offline">Non ten conexión, verifique a súa conectividade</string>
     <string name="nc_ok">Aceptar</string>
-    <string name="nc_ongoing_meeting">Xuntanza en curso</string>
+    <string name="nc_ongoing_meeting">Xuntanza en proceso</string>
     <string name="nc_open_conversation_to_registered_users">Abrir a conversa a usuarios rexistrados</string>
     <string name="nc_open_to_guest_app_users">Aberta tamén aos usuarios da aplicación convidados</string>
     <string name="nc_owner">Propietario</string>
@@ -567,6 +569,7 @@
     <string name="open_thread">Ir ao fío</string>
     <string name="play_pause_voice_message">Reproducir/poñer en pausa a mensaxe de voz</string>
     <string name="playback_speed_control">Control da velocidade de reprodución</string>
+    <string name="please_continue_the_login_process_in_the_browser">Continúe co acceso no navegador</string>
     <string name="polls_add_option">Engadir unha opción</string>
     <string name="polls_edit_vote">Editar o voto</string>
     <string name="polls_end_poll">Finalizar a enquisa</string>
@@ -682,6 +685,8 @@
     <string name="translation_error_title">Produciuse un fallo na tradución</string>
     <string name="translation_from">Desde:</string>
     <string name="translation_to">Para</string>
+    <string name="turn_off_background_blur">Desactivar o esvaemento do fondo</string>
+    <string name="turn_on_background_blur">Activar o esvaemento do fondo</string>
     <string name="typing_1_other">e 1 máis está a escribir…</string>
     <string name="typing_are_typing">están a escribiren…</string>
     <string name="typing_is_typing">está a escribir…</string>

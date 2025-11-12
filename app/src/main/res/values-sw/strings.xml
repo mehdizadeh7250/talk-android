@@ -119,7 +119,7 @@
     <string name="nc_all_ok_operation">Sawa, zote zimefanyika!</string>
     <string name="nc_attendee_pin">Pin: %1$s</string>
     <string name="nc_biometric_unlock">Fungua %1$s</string>
-    <string name="nc_bluetooth_permission_hint">To enable bluetooth speakers please grant \"Nearby devices\" permission.</string>
+    <string name="nc_bluetooth_permission_hint">Ili kuwezesha spika za bluetooth tafadhali toa ruhusa ya \"Vifaa vya Karibu\".</string>
     <string name="nc_call_button_content_description_answer_video_call">Jibu kama simu ya video</string>
     <string name="nc_call_button_content_description_answer_voice_only">Jibu kama simu ya sauti tu</string>
     <string name="nc_call_button_content_description_audio_output">Badili maingilio ya sauti</string>
@@ -131,6 +131,8 @@
     <string name="nc_call_incoming">Zinazoingia</string>
     <string name="nc_call_name">Jina la mazungumzo</string>
     <string name="nc_call_notifications">Arifu za simu</string>
+    <string name="nc_call_ongoing_notification_content">Gusa ili urudi kwenye simu yako.</string>
+    <string name="nc_call_ongoing_notification_default_title">Simu inaendelea</string>
     <string name="nc_call_raised_hand">%1$s ameinua mkono</string>
     <string name="nc_call_reconnecting">Inaunganisha upya</string>
     <string name="nc_call_ringing">INAITA</string>
@@ -142,7 +144,7 @@
     <string name="nc_call_video">%s simu ya video</string>
     <string name="nc_call_voice">%s simu ya sauti</string>
     <string name="nc_camera_permission_hint">Kuwezesha mawasiliano ya video tafadhali toa ruhusa ya kamera</string>
-    <string name="nc_cancel">Cancel</string>
+    <string name="nc_cancel">Ghairi</string>
     <string name="nc_capabilities_failed">Imeshindwa kuleta uwezo, kukatisha</string>
     <string name="nc_caption">Manukuu</string>
     <string name="nc_certificate_dialog_text">Je, unaamini cheti cha SSL kisichojulikana hadi sasa, kilichotolewa na %1$s kwa %2$s, halali kutoka %3$s hadi %4$s?</string>
@@ -246,8 +248,7 @@
     <string name="nc_dialog_save_to_storage_no">Hapana</string>
     <string name="nc_dialog_save_to_storage_title">Ungependa kuhifadhi kwenye hifadhi?</string>
     <string name="nc_dialog_save_to_storage_yes">Ndiyo</string>
-    <string name="nc_display_name_not_fetched">Jina la onyesho halikuweza kuletwa, inaahirisha
- </string>
+    <string name="nc_display_name_not_fetched">Jina la onyesho halikuweza kuletwa, inaahirisha</string>
     <string name="nc_display_name_not_stored">Haikuweza kuhifadhi jina la onyesho, inakatisha</string>
     <string name="nc_edit_icon">Hariri</string>
     <string name="nc_edit_message">Hariri</string>
@@ -296,7 +297,7 @@
     <string name="nc_guest_access_resend_invitations_successful">Mialiko ilitumwa nje tena</string>
     <string name="nc_guest_access_share_link">Shirikisha kiungio cha mazungumzo</string>
     <string name="nc_hint_enter_a_message">Ingiza ujumbe...</string>
-    <string name="nc_ignore_battery_optimization_dialog_text">Uboreshaji wa betri haujapuuzwa. Hii inapaswa kubadilishwa ili kuhakikisha kuwa arifa zinafanya kazi chinichini! Tafadhali bofya SAWA na uchague \"Programu zote\" -> %1$s -> Usiboresha</string>
+    <string name="nc_ignore_battery_optimization_dialog_text">Uboreshaji wa betri haujapuuzwa. Hii inapaswa kubadilishwa ili kuhakikisha kuwa arifa zinafanya kazi chinichini! Tafadhali bofya SAWA na uchague \"Programu zote\" -> %1$s na kisha \"Usiboresha\" au \"Ruhusu matumizi ya usuli -> Bila vikwazo\".</string>
     <string name="nc_ignore_battery_optimization_dialog_title">Puuza uboreshaji wa betri</string>
     <string name="nc_important_conversation">Mazungumzo muhimu</string>
     <string name="nc_important_conversation_desc">\"Usisumbue\" hali ya mtumiaji inapuuzwa kwa mazungumzo muhimu</string>
@@ -569,6 +570,7 @@
     <string name="open_thread">Nenda kwenye mjadala</string>
     <string name="play_pause_voice_message">Cheza/simamisha ujumbe wa sauti</string>
     <string name="playback_speed_control">Udhibiti wa kasi ya mshindonyuma</string>
+    <string name="please_continue_the_login_process_in_the_browser">Tafadhali endelea kuingia katika kivinjari</string>
     <string name="polls_add_option">Ongeza mbadala</string>
     <string name="polls_edit_vote">Hariri kura</string>
     <string name="polls_end_poll">Maliza kura ya maoni</string>
@@ -684,6 +686,8 @@
     <string name="translation_error_title">Utafsiri umeshindikana</string>
     <string name="translation_from">Tangu/ kutoka</string>
     <string name="translation_to">Mpaka/ hadi</string>
+    <string name="turn_off_background_blur">Zima ukungu wa mandharinyuma</string>
+    <string name="turn_on_background_blur">Washa ukungu wa mandharinyuma</string>
     <string name="typing_1_other">na mwingine 1 anachapisha</string>
     <string name="typing_are_typing">wanachapisha</string>
     <string name="typing_is_typing">anachapisha</string>
