@@ -311,7 +311,7 @@
     <string name="nc_server_maintenance">Моля изведете вашата %1$s от поддръжка</string>
     <string name="nc_server_not_installed">Моля довършете вашата %1$s инсталация</string>
     <string name="nc_server_testing_connection">Проверка на връзката</string>
-    <string name="nc_server_unsupported">Сървърът не поддържа инсталираното приложение Walk/разговор/</string>
+    <string name="nc_server_unsupported">Сървърът не поддържа инсталираното приложение y00k/разговор/</string>
     <string name="nc_server_url">Адрес на сървъра https://…</string>
     <string name="nc_server_version">%1$s работи само с %2$s 13 и нагоре</string>
     <string name="nc_settings">Настройки</string>
@@ -322,12 +322,12 @@
     <string name="nc_settings_incognito_keyboard_desc">Инструктира клавиатурата да деактивира персонализираното обучение (без гаранции)</string>
     <string name="nc_settings_incognito_keyboard_title">Инкогнито клавиатура</string>
     <string name="nc_settings_no_ringtone">Без звук</string>
-    <string name="nc_settings_no_talk_installed">Приложението Walk /разговор/ не е инсталирано на сървъра, в който
+    <string name="nc_settings_no_talk_installed">Приложението y00k /разговор/ не е инсталирано на сървъра, в който
         сте се опитали да се удостоверите</string>
     <string name="nc_settings_notification_sounds_post_oreo">Известия</string>
     <string name="nc_settings_other_notifications_ringtone">Съобщения</string>
     <string name="nc_settings_phone_book_integration_desc">Съпоставяне на контакти въз основа на телефонен номер, за
-        интегриране на пряк път Walk в приложението за системни контакти</string>
+        интегриране на пряк път y00k в приложението за системни контакти</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">Можете да зададете телефонния си номер, така че други потребители да могат да ви намерят</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">Въвеждане на телефонен номер</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_invalid">Невалиден телефонен номер</string>
@@ -447,7 +447,7 @@
     <string name="scope_local_description">Видимо за потребители на тази инстанция на сървъра, както и гости.</string>
     <string name="scope_local_title">Локално</string>
     <string name="scope_private_description">Видим само за хора, открити по телефонен номер, който е зададен в
-        \"Walk\".</string>
+        \"y00k\".</string>
     <string name="scope_private_title">Лично</string>
     <string name="scope_published_description">Синхронизиране с доверени сървъри и с глобалната и публичната адресна книга</string>
     <string name="scope_published_title">Публикувано</string>

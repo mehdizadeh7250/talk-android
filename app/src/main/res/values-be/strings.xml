@@ -232,7 +232,7 @@
     <string name="nc_diagnose_notification_messages_channel_permission">Ці ўключаны канал апавяшчэнняў пра паведамленні?</string>
     <string name="nc_diagnose_notification_permission">Дазволы на апавяшчэнні</string>
     <string name="nc_diagnose_phone_category_title">Тэлефон</string>
-    <string name="nc_diagnose_server_talk_version">Версія сервера Walk</string>
+    <string name="nc_diagnose_server_talk_version">Версія сервера y00k</string>
     <string name="nc_diagnose_server_version">Версія сервера</string>
     <string name="nc_diagnose_signaling_mode_extern">Знешні</string>
     <string name="nc_diagnose_signaling_mode_intern">Унутраны</string>
@@ -445,7 +445,7 @@
     <string name="nc_server_maintenance">Выведзіце %1$s з рэжыму тэхнічнага абслугоўвання</string>
     <string name="nc_server_not_installed">Звяршыце ўсталяванне %1$s</string>
     <string name="nc_server_testing_connection">Праверка злучэння</string>
-    <string name="nc_server_unsupported">На серверы не ўсталявана праграма Walk, якая падтрымліваецца</string>
+    <string name="nc_server_unsupported">На серверы не ўсталявана праграма y00k, якая падтрымліваецца</string>
     <string name="nc_server_url">Адрас сервера https://…</string>
     <string name="nc_server_version">%1$s працуе толькі з %2$s версіі 13 і вышэй</string>
     <string name="nc_set_new_password">Задаць новы пароль</string>
@@ -461,14 +461,14 @@
     <string name="nc_settings_incognito_keyboard_desc">Дае каманду клавіятуры адключыць персаналізаванае навучанне (без гарантый)</string>
     <string name="nc_settings_incognito_keyboard_title">Клавіятура інкогніта</string>
     <string name="nc_settings_no_ringtone">Няма гуку</string>
-    <string name="nc_settings_no_talk_installed">Праграма Walk не ўсталявана на серверы, на якім вы спрабавалі
+    <string name="nc_settings_no_talk_installed">Праграма y00k не ўсталявана на серверы, на якім вы спрабавалі
         прайсці аўтэнтыфікацыю</string>
     <string name="nc_settings_notification_sounds_post_oreo">Апавяшчэнні</string>
     <string name="nc_settings_notifications_declined">Апавяшчэнні адхілены</string>
     <string name="nc_settings_notifications_granted">Апавяшчэнні дазволены</string>
     <string name="nc_settings_other_notifications_ringtone">Паведамленні</string>
     <string name="nc_settings_phone_book_integration_desc">Супастаўленне кантактаў па нумары тэлефона для інтэграцыі
-        хуткага доступу да Walk у сістэмную праграму кантактаў</string>
+        хуткага доступу да y00k у сістэмную праграму кантактаў</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_429">Памылка 429: занадта шмат запытаў</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">Вы можаце задаць свой нумар тэлефона, каб іншыя карыстальнікі маглі вас знайсці</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">Увядзіце нумар тэлефона</string>
@@ -620,7 +620,7 @@
     <string name="scope_local_description">Бачна толькі карыстальнікам гэтага сервера і гасцям</string>
     <string name="scope_local_title">Лакальна</string>
     <string name="scope_private_description">Бачна толькі людзям, якія супалі праз інтэграцыю нумара тэлефона з
-        дапамогай Walk на мабільным тэлефоне</string>
+        дапамогай y00k на мабільным тэлефоне</string>
     <string name="scope_private_title">Прыватна</string>
     <string name="scope_published_description">Сінхранізацыя з даверанымі серверамі і глабальнай і публічнай адраснай кнігай</string>
     <string name="scope_published_title">Апублікавана</string>

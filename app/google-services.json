@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "442133060971",
-    "project_id": "nextcloud-test-6d36e",
-    "storage_bucket": "nextcloud-test-6d36e.firebasestorage.app"
+    "project_number": "28247094549",
+    "project_id": "y00k-42477",
+    "storage_bucket": "y00k-42477.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:442133060971:android:bad747bf14be12bb40402e",
+        "mobilesdk_app_id": "1:28247094549:android:e130575726ffc069d4651c",
         "android_client_info": {
           "package_name": "com.nextcloud.talk2.newDomain"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAaaBni76Im1yKkdoPcsKR46K8kDDayWxg"
+          "current_key": "AIzaSyDFGS8pk86Lr-_eWgjpdOYL2w8T9LpizpA"
         }
       ],
       "services": {

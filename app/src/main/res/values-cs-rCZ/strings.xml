@@ -232,7 +232,7 @@
     <string name="nc_diagnose_notification_messages_channel_permission">Kanál upozorňování na zprávy zapnut?</string>
     <string name="nc_diagnose_notification_permission">Oprávnění upozornění</string>
     <string name="nc_diagnose_phone_category_title">Telefon</string>
-    <string name="nc_diagnose_server_talk_version">Verze Walk na serveru</string>
+    <string name="nc_diagnose_server_talk_version">Verze y00k na serveru</string>
     <string name="nc_diagnose_server_version">Verze serveru</string>
     <string name="nc_diagnose_signaling_mode_extern">Externí</string>
     <string name="nc_diagnose_signaling_mode_intern">Vnitřní</string>
@@ -445,7 +445,7 @@
     <string name="nc_server_maintenance">Přepněte svůj %1$s zpět z režimu údržby</string>
     <string name="nc_server_not_installed">Dokončete instalaci %1$s</string>
     <string name="nc_server_testing_connection">Zkouší se připojení</string>
-    <string name="nc_server_unsupported">Na serveru není nainstalovaná podporovaná verze aplikace Walk</string>
+    <string name="nc_server_unsupported">Na serveru není nainstalovaná podporovaná verze aplikace y00k</string>
     <string name="nc_server_url">Adresa serveru https://…</string>
     <string name="nc_server_version">%1$s funguje pouze s %2$s 13 a novějším</string>
     <string name="nc_set_new_password">Nastavit nové heslo</string>
@@ -461,14 +461,14 @@
     <string name="nc_settings_incognito_keyboard_desc">Dát klávesnici pokyn, že má vypnout přizpůsobené učení se (bez záruky)</string>
     <string name="nc_settings_incognito_keyboard_title">Inkognito klávesnice</string>
     <string name="nc_settings_no_ringtone">Žádný zvuk</string>
-    <string name="nc_settings_no_talk_installed">Aplikace Walk není na serveru, vůči kterému jste se pokusili ověřit,
+    <string name="nc_settings_no_talk_installed">Aplikace y00k není na serveru, vůči kterému jste se pokusili ověřit,
         vůbec nainstalována</string>
     <string name="nc_settings_notification_sounds_post_oreo">Upozornění</string>
     <string name="nc_settings_notifications_declined">Upozorňování jsou odmítnuta</string>
     <string name="nc_settings_notifications_granted">Upozorňování jsou udělena</string>
     <string name="nc_settings_other_notifications_ringtone">Zprávy</string>
     <string name="nc_settings_phone_book_integration_desc">Najít kontakty se stejným telefonním číslem a přidat
-        zkratku Walk do systémové aplikace pro kontakty</string>
+        zkratku y00k do systémové aplikace pro kontakty</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_429">Chyba 429 – příliš mnoho požadavků</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">Můžete si nastavit své telefonní číslo a tak vás budou moci ostatní uživatelé najít</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">Zadejte telefonní číslo</string>
@@ -547,7 +547,7 @@
     <string name="nc_upload_video_from_cam">Natočit video</string>
     <string name="nc_user">Uživatel</string>
     <string name="nc_video_filename">Videozáznam z %1$s</string>
-    <string name="nc_voice_message_filename">Nahrávka z Walk z %1$s (%2$s)</string>
+    <string name="nc_voice_message_filename">Nahrávka z y00k z %1$s (%2$s)</string>
     <string name="nc_voice_message_hold_to_record_info">Podržením nahrajte, uvolněním odešlete.</string>
     <string name="nc_voice_message_missing_audio_permission">Je zapotřebí oprávnění pro zaznamenávání zvuku</string>
     <string name="nc_voice_message_slide_to_cancel">« Zrušíte přejetím prstem</string>
@@ -619,7 +619,7 @@
     <string name="scope_local_description">Viditelné pouze lidem na této instanci a hostům</string>
     <string name="scope_local_title">Místní</string>
     <string name="scope_private_description">Viditelné pouze lidem, se kterými nalezena shoda začleněním přes
-        telefonní číslo prostřednictvím Walk na mobilním telefonu</string>
+        telefonní číslo prostřednictvím y00k na mobilním telefonu</string>
     <string name="scope_private_title">Soukromé</string>
     <string name="scope_published_description">Synchronizovat s důvěryhodnými servery a globálním a veřejným adresářem kontaktů</string>
     <string name="scope_published_title">Zveřejněno</string>

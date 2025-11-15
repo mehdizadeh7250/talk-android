@@ -229,7 +229,7 @@ fun ImageView.loadThumbnail(url: String, user: User): io.reactivex.disposables.D
 
     val layers = arrayOfNulls<Drawable>(2)
     layers[0] = ContextCompat.getDrawable(context, R.drawable.ic_launcher_background)
-    layers[1] = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)
+    layers[1] = ContextCompat.getDrawable(context, R.mipmap.ic_launcher_foreground)
     requestBuilder.placeholder(LayerDrawable(layers))
 
     if (url.startsWith(user.baseUrl!!) &&
@@ -291,7 +291,7 @@ fun ImageView.loadUserAvatar(any: Any?): io.reactivex.disposables.Disposable =
 fun ImageView.loadSystemAvatar(): io.reactivex.disposables.Disposable {
     val layers = arrayOfNulls<Drawable>(2)
     layers[0] = ContextCompat.getDrawable(context, R.drawable.ic_launcher_background)
-    layers[1] = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)
+    layers[1] = ContextCompat.getDrawable(context, R.mipmap.ic_launcher_foreground)
     val layerDrawable = LayerDrawable(layers)
     val data: Any = layerDrawable
 
