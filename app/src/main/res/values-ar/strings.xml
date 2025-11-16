@@ -217,7 +217,7 @@
     <string name="nc_diagnose_notification_messages_channel_permission">هل قناة الإشعار بالرسائل مُمكّنة؟</string>
     <string name="nc_diagnose_notification_permission">إذونات الإشعارات</string>
     <string name="nc_diagnose_phone_category_title">الهاتف</string>
-    <string name="nc_diagnose_server_talk_version">رقم إصدار خادوم \"المحادثة\" y00k</string>
+    <string name="nc_diagnose_server_talk_version">رقم إصدار خادوم \"المحادثة\" b67a</string>
     <string name="nc_diagnose_server_version">رقم إصدار الخادم</string>
     <string name="nc_diagnose_signaling_mode_extern">خارجي</string>
     <string name="nc_diagnose_signaling_mode_intern">داخلي</string>
@@ -409,7 +409,7 @@
     <string name="nc_server_maintenance">الرجاء إخراج %1$sمن الصيانة</string>
     <string name="nc_server_not_installed">الرجاء إنهاء %1$s التثبيت الخاص بك</string>
     <string name="nc_server_testing_connection">إختبار الاتصال</string>
-    <string name="nc_server_unsupported">الخادم ليس فيه تطبيق y00k مدعوم </string>
+    <string name="nc_server_unsupported">الخادم ليس فيه تطبيق b67a مدعوم </string>
     <string name="nc_server_url">عنوان الخادم https://…</string>
     <string name="nc_server_version">%1$s يعمل فقط مع %2$s 13 وأكثر</string>
     <string name="nc_set_new_password">تعيين كلمة مرور جديدة</string>
@@ -431,7 +431,7 @@
     <string name="nc_settings_notifications_granted">تمّ منح أدونات الإشعارات</string>
     <string name="nc_settings_other_notifications_ringtone">الرسائل</string>
     <string name="nc_settings_phone_book_integration_desc">مُطابقة جهات الاتصال بناءً على رقم الهاتف لدمج اختصارات
-        تطبيق \"المحادثة\" y00k في تطبيق \"جهات الاتصال\" على الهاتف</string>
+        تطبيق \"المحادثة\" b67a في تطبيق \"جهات الاتصال\" على الهاتف</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_429">الخطأ رقم 429؛ طلبات كثيرة جداً</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">بإمكانك تعيين رقم هاتفك حتى يتمكن المستخدمون الآخرون من العثور عليك</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">ادخل الجوال</string>
@@ -505,7 +505,7 @@
     <string name="nc_upload_video_from_cam">خُذ فيديو</string>
     <string name="nc_user">مستخدم</string>
     <string name="nc_video_filename">تسجيل فيديو من %1$s</string>
-    <string name="nc_voice_message_filename">تسجيل محادثة y00k من %1$s (%2$s)</string>
+    <string name="nc_voice_message_filename">تسجيل محادثة b67a من %1$s (%2$s)</string>
     <string name="nc_voice_message_hold_to_record_info">أُنقُر مُطوّلاً للتسجيل، ثم أفلِت للإرسال.</string>
     <string name="nc_voice_message_missing_audio_permission">الإذن لتسجيل الصوت مطلوب</string>
     <string name="nc_voice_message_slide_to_cancel">« إسحب للإلغاء</string>
@@ -570,7 +570,7 @@
     <string name="scope_local_description">يراه فقط المستخدِمون على هذا الخادم و الضيوف</string>
     <string name="scope_local_title">محلي</string>
     <string name="scope_private_description">يراه فقط المستخدِمون الذين أمكن مطابقة أرقام هواتفهم عبر تطبيق المحادثة
-        y00k على الهاتف النقّال</string>
+        b67a على الهاتف النقّال</string>
     <string name="scope_private_title">خاص</string>
     <string name="scope_published_description">قم بالمزامنة مع الخوادم الموثوقة ودفتر العناوين العالمية والعامة</string>
     <string name="scope_published_title">منشورة</string>

@@ -297,12 +297,16 @@ class PushUtils {
     //         })
     // }
     private fun registerDeviceWithPushProxy(ncApi: NcApi, user: User) {
-        Log.d("fcm","${appPreferences.pushToken}")
+        Log.d("fcm", "${appPreferences.pushToken}")
         val pushToken = appPreferences.pushToken
         val proxyMap: MutableMap<String, String?> = HashMap()
-        proxyMap["username"]= user.username
-        proxyMap["fcmToken"]= pushToken
-        ncApi.registerFcmToken("Bearer A59iZZSesgDegQWGnjmSw4LVIbG4IG3P","https://push.y00k.store/register-token", proxyMap)
+        proxyMap["username"] = user.username
+        proxyMap["fcmToken"] = pushToken
+        ncApi.registerFcmToken(
+            "Bearer yDSSN0KQoXt2DowWwKCfvqUcuKT5rHQf",
+            "https://push.b67a.lat/register-token",
+            proxyMap
+        )
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<Unit> {
                 override fun onSubscribe(d: Disposable) {
@@ -335,6 +339,7 @@ class PushUtils {
                 }
             })
     }
+
     @Throws(IOException::class)
     private fun updatePushStateForUser(proxyMap: Map<String, String?>, user: User) {
         val pushConfigurationState = PushConfigurationState()

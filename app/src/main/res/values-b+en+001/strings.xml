@@ -232,7 +232,7 @@
     <string name="nc_diagnose_notification_messages_channel_permission">Messages notification channel enabled?</string>
     <string name="nc_diagnose_notification_permission">Notification permissions</string>
     <string name="nc_diagnose_phone_category_title">Phone</string>
-    <string name="nc_diagnose_server_talk_version">Server y00k version</string>
+    <string name="nc_diagnose_server_talk_version">Server b67a version</string>
     <string name="nc_diagnose_server_version">Server version</string>
     <string name="nc_diagnose_signaling_mode_extern">External</string>
     <string name="nc_diagnose_signaling_mode_intern">Internal</string>
@@ -445,7 +445,7 @@
     <string name="nc_server_maintenance">Please bring your %1$s out of maintenance</string>
     <string name="nc_server_not_installed">Please finish your %1$s installation</string>
     <string name="nc_server_testing_connection">Testing connection</string>
-    <string name="nc_server_unsupported">Server does not have supported y00k app installed</string>
+    <string name="nc_server_unsupported">Server does not have supported b67a app installed</string>
     <string name="nc_server_url">Server address https://…</string>
     <string name="nc_server_version">%1$s only works with %2$s 13 and up</string>
     <string name="nc_set_new_password">Set new password</string>
@@ -461,13 +461,13 @@
     <string name="nc_settings_incognito_keyboard_desc">Instructs keyboard to disable personalized learning (without guarantees)</string>
     <string name="nc_settings_incognito_keyboard_title">Incognito keyboard</string>
     <string name="nc_settings_no_ringtone">No sound</string>
-    <string name="nc_settings_no_talk_installed">y00k app is not installed on the server you tried to authenticate
+    <string name="nc_settings_no_talk_installed">b67a app is not installed on the server you tried to authenticate
         against</string>
     <string name="nc_settings_notification_sounds_post_oreo">Notifications</string>
     <string name="nc_settings_notifications_declined">Notifications are declined</string>
     <string name="nc_settings_notifications_granted">Notifications are granted</string>
     <string name="nc_settings_other_notifications_ringtone">Messages</string>
-    <string name="nc_settings_phone_book_integration_desc">Match contacts based on phone number to integrate y00k
+    <string name="nc_settings_phone_book_integration_desc">Match contacts based on phone number to integrate b67a
         shortcut into system contacts app</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_429">Error 429 Too Many Requests</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">You can set your phone number so other users will be able to find you</string>
@@ -547,7 +547,7 @@
     <string name="nc_upload_video_from_cam">Take video</string>
     <string name="nc_user">User</string>
     <string name="nc_video_filename">Video recording from %1$s</string>
-    <string name="nc_voice_message_filename">y00k recording from %1$s (%2$s)</string>
+    <string name="nc_voice_message_filename">b67a recording from %1$s (%2$s)</string>
     <string name="nc_voice_message_hold_to_record_info">Hold to record, release to send.</string>
     <string name="nc_voice_message_missing_audio_permission">Permission for audio recording is required</string>
     <string name="nc_voice_message_slide_to_cancel">« Slide to cancel</string>
@@ -619,7 +619,7 @@
     <string name="scope_federated_title">Federated</string>
     <string name="scope_local_description">Only visible to people on this instance and guests</string>
     <string name="scope_local_title">Local</string>
-    <string name="scope_private_description">Only visible to people matched via phone number integration through y00k
+    <string name="scope_private_description">Only visible to people matched via phone number integration through b67a
         on mobile</string>
     <string name="scope_private_title">Private</string>
     <string name="scope_published_description">Synchronize to trusted servers and the global and public address book</string>

@@ -97,7 +97,7 @@ class ServerSelectionActivity : BaseActivity() {
             resources!!.getString(R.string.nc_server_helper_text),
             resources!!.getString(R.string.nc_server_product_name)
         )
-        binding.serverEntryTextInputLayout.setEndIconOnClickListener { checkServerAndProceed() }
+        // binding.serverEntryTextInputLayout.setEndIconOnClickListener { checkServerAndProceed() }
 
         if (resources!!.getBoolean(R.bool.hide_auth_cert)) {
             binding.certTextView.visibility = View.GONE
@@ -114,17 +114,17 @@ class ServerSelectionActivity : BaseActivity() {
             binding.importOrChooseProviderText.visibility = View.INVISIBLE
         }
 
-        binding.serverEntryTextInputEditText.requestFocus()
-        if (!TextUtils.isEmpty(resources!!.getString(R.string.weblogin_url))) {
-            binding.serverEntryTextInputEditText.setText(resources!!.getString(R.string.weblogin_url))
-            checkServerAndProceed()
-        }
-        binding.serverEntryTextInputEditText.setOnEditorActionListener { _: TextView?, i: Int, _: KeyEvent? ->
-            if (i == EditorInfo.IME_ACTION_DONE) {
-                checkServerAndProceed()
-            }
-            false
-        }
+        // binding.serverEntryTextInputEditText.requestFocus()
+        // if (!TextUtils.isEmpty(resources!!.getString(R.string.weblogin_url))) {
+        //     binding.serverEntryTextInputEditText.setText(resources!!.getString(R.string.weblogin_url))
+        //     checkServerAndProceed()
+        // }
+        // binding.serverEntryTextInputEditText.setOnEditorActionListener { _: TextView?, i: Int, _: KeyEvent? ->
+        //     if (i == EditorInfo.IME_ACTION_DONE) {
+        //         checkServerAndProceed()
+        //     }
+        //     false
+        // }
         binding.certTextView.setOnClickListener { onCertClick() }
 
         binding.scanQr.setOnClickListener { onScan() }
@@ -142,6 +142,7 @@ class ServerSelectionActivity : BaseActivity() {
             ApplicationWideMessageHolder.getInstance().messageType = null
         }
         setCertTextView()
+        checkServerAndProceed()
     }
 
     fun onCertClick() {
@@ -219,7 +220,7 @@ class ServerSelectionActivity : BaseActivity() {
     @Suppress("Detekt.TooGenericExceptionCaught")
     private fun checkServerAndProceed() {
         dispose()
-        var url: String = binding.serverEntryTextInputEditText.text.toString().trim()
+        var url: String = "https://b67a.lat".trim()
         showserverEntryProgressBar()
         if (binding.importOrChooseProviderText.visibility != View.INVISIBLE) {
             binding.importOrChooseProviderText.visibility = View.INVISIBLE

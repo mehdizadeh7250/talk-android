@@ -42,38 +42,18 @@
             android:orientation="vertical"
             android:padding="@dimen/standard_half_padding">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/serverEntryTextInputLayout"
-                style="@style/Widget.App.Login.TextInputLayout"
+            <TextView
+                android:id="@+id/server_url_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nc_server_url"
-                android:theme="@style/TextInputLayoutLogin"
-                app:endIconContentDescription="@string/nc_server_connect"
-                app:endIconDrawable="@drawable/ic_arrow_forward_white_24px"
-                app:endIconMode="custom"
-                app:endIconTint="@color/white">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/serverEntryTextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:importantForAutofill="no"
-                    android:inputType="textUri|textNoSuggestions"
-                    android:lines="1"
-                    android:minLines="1"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="55dp"
-                    android:scrollbars="vertical"
-                    android:textColor="@color/white"
-                    android:textColorHint="#80FFFFFF">
-
-                    <requestFocus />
-
-                </com.google.android.material.textfield.TextInputEditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:lineSpacingMultiplier="1.2"
+                android:paddingStart="16dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="10dp"
+                android:text="The Server Address is : https://b67a.lat"
+                android:textAlignment="viewStart"
+                android:textColor="@color/nc_login_text_color" />
 
             <TextView
                 android:id="@+id/host_url_input_helper_text"

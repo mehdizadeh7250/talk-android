@@ -54,7 +54,7 @@ android {
                 dimension "default"
             }
             gplay {
-                applicationId 'com.nextcloud.talk2.newDomain'
+                applicationId 'com.kb.ro.fbproj9'
                 dimension "default"
             }
             qa {

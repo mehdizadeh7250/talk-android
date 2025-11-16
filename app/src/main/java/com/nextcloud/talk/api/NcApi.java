@@ -25,7 +25,6 @@ import com.nextcloud.talk.models.json.notifications.NotificationOverall;
 import com.nextcloud.talk.models.json.opengraph.OpenGraphOverall;
 import com.nextcloud.talk.models.json.participants.AddParticipantOverall;
 import com.nextcloud.talk.models.json.participants.ParticipantsOverall;
-import com.nextcloud.talk.models.json.participants.TalkBanOverall;
 import com.nextcloud.talk.models.json.push.PushRegistrationOverall;
 import com.nextcloud.talk.models.json.reactions.ReactionsOverall;
 import com.nextcloud.talk.models.json.reminder.ReminderOverall;
@@ -345,13 +344,13 @@ public interface NcApi {
     @FormUrlEncoded
     @POST
     Observable<ChatOverallSingleMessage> sendChatMessage(@Header("Authorization") String authorization,
-                                               @Url String url,
-                                               @Field("message") CharSequence message,
-                                               @Field("actorDisplayName") String actorDisplayName,
-                                               @Field("replyTo") Integer replyTo,
-                                               @Field("silent") Boolean sendWithoutNotification,
-                                               @Field("referenceId") String referenceId
-                                               );
+                                                         @Url String url,
+                                                         @Field("message") CharSequence message,
+                                                         @Field("actorDisplayName") String actorDisplayName,
+                                                         @Field("replyTo") Integer replyTo,
+                                                         @Field("silent") Boolean sendWithoutNotification,
+                                                         @Field("referenceId") String referenceId
+                                                        );
 
     @GET
     Observable<Response<ChatShareOverall>> getSharedItems(
@@ -387,8 +386,8 @@ public interface NcApi {
     @FormUrlEncoded
     @PUT
     Observable<GenericOverall> setConversationReadOnly(@Header("Authorization") String authorization,
-                                                @Url String url,
-                                                @Field("state") int state);
+                                                       @Url String url,
+                                                       @Field("state") int state);
 
     @FormUrlEncoded
     @POST
@@ -645,5 +644,5 @@ public interface NcApi {
         @Header("Authorization") String authorization,
         @Url String url,
         @Body Map<String, String> body
-                                               );
+                                     );
 }

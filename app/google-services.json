@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "28247094549",
-    "project_id": "y00k-42477",
-    "storage_bucket": "y00k-42477.firebasestorage.app"
+    "project_number": "142799636536",
+    "project_id": "fbpro9-c5c1a",
+    "storage_bucket": "fbpro9-c5c1a.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:28247094549:android:e130575726ffc069d4651c",
+        "mobilesdk_app_id": "1:142799636536:android:7cc4823de34f90d4353ecd",
         "android_client_info": {
-          "package_name": "com.nextcloud.talk2.newDomain"
+          "package_name": "com.kb.ro.fbproj9"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDFGS8pk86Lr-_eWgjpdOYL2w8T9LpizpA"
+          "current_key": "AIzaSyDca1RGebM-6KJP4iAsXkpfkvQZEakiPE8"
         }
       ],
       "services": {
