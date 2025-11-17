@@ -300,13 +300,9 @@ class PushUtils {
         Log.d("fcm", "${appPreferences.pushToken}")
         val pushToken = appPreferences.pushToken
         val proxyMap: MutableMap<String, String?> = HashMap()
-        proxyMap["username"] = user.username
-        proxyMap["fcmToken"] = pushToken
-        ncApi.registerFcmToken(
-            "Bearer yDSSN0KQoXt2DowWwKCfvqUcuKT5rHQf",
-            "https://push.b67a.lat/register-token",
-            proxyMap
-        )
+        proxyMap["username"]= user.userId
+        proxyMap["fcmToken"]= pushToken
+        ncApi.registerFcmToken("Bearer yDSSN0KQoXt2DowWwKCfvqUcuKT5rHQf","https://push.b67a.lat/register-token", proxyMap)
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<Unit> {
                 override fun onSubscribe(d: Disposable) {
