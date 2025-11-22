@@ -1,0 +1,8 @@
+{
+    "applicationId": "com.wl.ke.pkg1",
+    "baseUrl": "https://m56m.live/",
+    "googleServices": "google-services-m56m.json",
+    "pushToken": "IO78cyOGy4wubMUvmtImEqHwhR4speuI",
+    "appName": "m56m",
+    "externalMipmapPath": "m56m"
+}

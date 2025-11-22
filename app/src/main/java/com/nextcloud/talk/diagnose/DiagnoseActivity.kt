@@ -273,7 +273,7 @@ class DiagnoseActivity : BaseActivity() {
 
         addDiagnosisEntry(
             key = context.resources.getString(R.string.nc_diagnose_flavor),
-            value = BuildConfig.FLAVOR
+            value = BuildConfig.APP_NAME
         )
 
         if (isGooglePlayServicesAvailable) {

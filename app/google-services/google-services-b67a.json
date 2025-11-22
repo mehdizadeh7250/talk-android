@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "142799636536",
+    "project_id": "fbpro9-c5c1a",
+    "storage_bucket": "fbpro9-c5c1a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142799636536:android:7cc4823de34f90d4353ecd",
+        "android_client_info": {
+          "package_name": "com.kb.ro.fbproj9"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDca1RGebM-6KJP4iAsXkpfkvQZEakiPE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

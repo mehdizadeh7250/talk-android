@@ -1,0 +1,8 @@
+{
+    "applicationId": "com.wl.ke.pkg3",
+    "baseUrl": "https://s92r.lat/",
+    "googleServices": "google-services-s92r.json",
+    "pushToken": "FmIv7hieuvAP0TTTyeDTNFFSbsZhi4nQ",
+    "appName": "s92r",
+    "externalMipmapPath": "s92r"
+}

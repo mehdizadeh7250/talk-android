@@ -1,0 +1,8 @@
+{
+    "applicationId": "com.nc.tk.fbproj1",
+    "baseUrl": "https://y00k.store/",
+    "googleServices": "google-services-y00k.json",
+    "pushToken": "HXo5zje5FSrjU0JaWP6XrOGhZGF1fEGy",
+    "appName": "y00k",
+    "externalMipmapPath": "y00k"
+}

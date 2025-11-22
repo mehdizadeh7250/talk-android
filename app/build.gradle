@@ -28,16 +28,43 @@ apply plugin: 'io.gitlab.arturbosch.detekt'
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 apply plugin: 'kotlinx-serialization'
 
+
+import groovy.json.JsonSlurper
+ext {
+    dynamicConfig = null
+}
+
+if (project.hasProperty("CONFIG_FILE")) {
+    def configPath = project.CONFIG_FILE
+    def configFile = rootProject.file(configPath).canonicalFile
+    println ">>> CONFIG_FILE path passed: ${configPath}"
+    println ">>> Resolved config file: ${configFile.absolutePath}"
+    if (!configFile.exists()) {
+        throw new GradleException("Missing config file at: ${configFile.absolutePath}")
+    }
+    ext.dynamicConfig = new JsonSlurper().parse(configFile)
+    println ">>> Loaded dynamic config: ${configFile.absolutePath}"
+} else {
+    println ">>> No CONFIG_FILE passed. Using default config."
+}
+
 android {
     compileSdkVersion 35
-
+    compileSdk 35
     namespace = 'com.nextcloud.talk'
 
     defaultConfig {
         minSdkVersion 26
+        applicationId 'com.kb.ro.fbproj9'
         targetSdkVersion 35
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
+        def config = project.ext.dynamicConfig
+        if (config != null) {
+            applicationId config.applicationId
+            buildConfigField "String", "BASE_URL", "\"${config.baseUrl}\""
+            buildConfigField "String", "APP_NAME", "\"${config.appName}\""
+            buildConfigField "String", "PUSH_TOKEN", "\"${config.pushToken}\""
+        }
         // mayor.minor.hotfix.increment (for increment: 01-50=Alpha / 51-89=RC / 90-99=stable)
         // xx   .xxx  .xx    .xx
         versionCode 230000015
@@ -47,23 +74,23 @@ android {
         renderscriptTargetApi = 19
         renderscriptSupportModeEnabled true
 
-        productFlavors {
-            // used for f-droid
-            generic {
-                applicationId 'com.nextcloud.talk2'
-                dimension "default"
-            }
-            gplay {
-                applicationId 'com.kb.ro.fbproj9'
-                dimension "default"
-            }
-            qa {
-                applicationId "com.nextcloud.talk2.qa"
-                dimension "default"
-                versionCode 1
-                versionName "1"
-            }
-        }
+//        productFlavors {
+//            // used for f-droid
+//            generic {
+//                applicationId 'com.nextcloud.talk2'
+//                dimension "default"
+//            }
+//            gplay {
+//                applicationId 'com.kb.ro.fbproj9'
+//                dimension "default"
+//            }
+//            qa {
+//                applicationId "com.nextcloud.talk2.qa"
+//                dimension "default"
+//                versionCode 1
+//                versionName "1"
+//            }
+//        }
 
         // Enabling multidex support.
         multiDexEnabled = true
@@ -103,10 +130,19 @@ android {
         }
         unitTests.returnDefaultValues = true
     }
-
+    signingConfigs {
+        release {
+            storeFile file("${System.properties['user.home']}/.android/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -178,6 +214,90 @@ ext {
     mockitoKotlinVersion = "6.1.0"
 }
 
+android.applicationVariants.all { variant ->
+    def variantName = variant.name
+    def capitalizedVariantName = variantName.capitalize()
+
+    tasks.register("process${capitalizedVariantName}ExternalMipMapPath") {
+        doLast {
+            def cfg = project.ext.dynamicConfig
+            if (cfg == null) {
+                throw new GradleException(">>> CONFIG_FILE not loaded for ${variantName}")
+            }
+
+            if (!cfg.containsKey("externalMipmapPath")) {
+                println ">>> No 'externalMipMap' defined for ${variantName}, skipping."
+                return
+            }
+            println ">>> 'externalMipMap' ${cfg.externalMipmapPath}."
+            println ">>> 'externalMipMap' ${cfg.externalMipmapPath}."
+            def srcFolder = file("$projectDir/externalMipmapPath/${cfg.externalMipmapPath}")
+            println ">>> srcFolder = ${srcFolder.absolutePath}"
+            if (!srcFolder.exists()) {
+                throw new GradleException(">>> MipMap folder not found: ${srcFolder.absolutePath}")
+            }
+
+// همه فایل‌ها داخل فولدر srcFolder رو میریزیم داخل res/
+            copy {
+                from srcFolder
+                into file("$projectDir/src/main/res")
+            }
+            println ">>> Copied mipmap folder ${srcFolder.name} for ${variantName}"
+        }
+    }
+
+    // اگه بخوای این task قبل از compile انجام بشه
+    tasks.named("pre${capitalizedVariantName}Build").configure { dependsOn "process${capitalizedVariantName}ExternalMipMapPath" }
+}
+android.applicationVariants.all { variant ->
+    def variantName = variant.name
+    def capitalizedVariantName = variantName.capitalize()
+
+    tasks.named("process${capitalizedVariantName}GoogleServices").configure { task ->
+        task.doFirst {
+            def cfg = project.ext.dynamicConfig
+            if (cfg == null) {
+                throw new GradleException(">>> CONFIG_FILE not loaded for ${variantName}")
+            }
+
+            if (!cfg.containsKey("googleServices")) {
+                throw new GradleException(">>> Missing 'googleServices' in config.json for ${variantName}")
+            }
+
+            def srcFile = file("$projectDir/google-services/${cfg.googleServices}")
+
+            def destFile = file("$projectDir/google-services.json")
+
+            if (srcFile.exists()) {
+                println ">>> Copying ${srcFile.name} for ${variantName}"
+                copy {
+                    from srcFile
+                    into projectDir
+                    rename { "google-services.json" }
+                }
+            } else {
+                throw new GradleException(">>> File not found: ${srcFile.absolutePath}")
+            }
+        }
+    }
+}
+android.applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        def cfg = project.ext.dynamicConfig
+        if (cfg != null) {
+            // Use applicationId suffix or appName from JSON
+            def appName = cfg.appName ?: "app"
+            def buildType = variant.buildType.name
+            def versionName = variant.versionName
+
+            // Format: SUDOKU-release-v2.3.1.apk
+            outputFileName = "${appName}-${buildType}-v${versionName}.apk"
+        } else {
+            // Fallback if no config loaded
+            outputFileName = "default-${variant.name}.apk"
+        }
+    }
+}
 //configurations.configureEach {
 //    exclude group: 'com.google.firebase', module: 'firebase-core'
 //    exclude group: 'com.google.firebase', module: 'firebase-analytics'
@@ -319,8 +439,8 @@ dependencies {
     implementation 'com.github.nextcloud.android-common:ui:0.28.0'
     implementation 'com.github.nextcloud-deps:android-talk-webrtc:132.6834.0'
 
-    gplayImplementation 'com.google.android.gms:play-services-base:18.8.0'
-    gplayImplementation "com.google.firebase:firebase-messaging:25.0.1"
+    implementation 'com.google.android.gms:play-services-base:18.8.0'
+    implementation "com.google.firebase:firebase-messaging:25.0.1"
 
     //compose
     implementation(platform("androidx.compose:compose-bom:2025.09.00"))

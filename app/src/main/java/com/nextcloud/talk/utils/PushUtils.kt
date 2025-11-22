@@ -12,6 +12,7 @@ import android.content.Context
 import android.util.Base64
 import android.util.Log
 import autodagger.AutoInjector
+import com.nextcloud.talk.BuildConfig
 import com.nextcloud.talk.R
 import com.nextcloud.talk.api.NcApi
 import com.nextcloud.talk.application.NextcloudTalkApplication
@@ -302,7 +303,7 @@ class PushUtils {
         val proxyMap: MutableMap<String, String?> = HashMap()
         proxyMap["username"]= user.userId
         proxyMap["fcmToken"]= pushToken
-        ncApi.registerFcmToken("Bearer yDSSN0KQoXt2DowWwKCfvqUcuKT5rHQf","https://push.b67a.lat/register-token", proxyMap)
+        ncApi.registerFcmToken("Bearer ${BuildConfig.PUSH_TOKEN}","${BuildConfig.BASE_URL}/register-token", proxyMap)
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<Unit> {
                 override fun onSubscribe(d: Disposable) {

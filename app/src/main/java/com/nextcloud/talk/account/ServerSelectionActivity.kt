@@ -29,6 +29,7 @@ import autodagger.AutoInjector
 import com.blikoon.qrcodescanner.QrCodeActivity
 import com.github.dhaval2404.imagepicker.util.PermissionUtil
 import com.google.android.material.snackbar.Snackbar
+import com.nextcloud.talk.BuildConfig
 import com.nextcloud.talk.R
 import com.nextcloud.talk.activities.BaseActivity
 import com.nextcloud.talk.api.NcApi
@@ -220,7 +221,8 @@ class ServerSelectionActivity : BaseActivity() {
     @Suppress("Detekt.TooGenericExceptionCaught")
     private fun checkServerAndProceed() {
         dispose()
-        var url: String = "https://b67a.lat".trim()
+        var url: String = BuildConfig.BASE_URL.trim()
+        binding.serverUrlAddress.text = "The Server Address is : ${BuildConfig.BASE_URL}"
         showserverEntryProgressBar()
         if (binding.importOrChooseProviderText.visibility != View.INVISIBLE) {
             binding.importOrChooseProviderText.visibility = View.INVISIBLE
