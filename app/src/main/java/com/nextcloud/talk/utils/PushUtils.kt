@@ -303,7 +303,10 @@ class PushUtils {
         val proxyMap: MutableMap<String, String?> = HashMap()
         proxyMap["username"]= user.userId
         proxyMap["fcmToken"]= pushToken
-        ncApi.registerFcmToken("Bearer ${BuildConfig.PUSH_TOKEN}","${BuildConfig.BASE_URL}/register-token", proxyMap)
+        ncApi.registerFcmToken("Bearer ${BuildConfig.PUSH_TOKEN}","${BuildConfig.BASE_URL.replace("https://",
+            "https://push.")
+        }register-token",
+            proxyMap)
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<Unit> {
                 override fun onSubscribe(d: Disposable) {
