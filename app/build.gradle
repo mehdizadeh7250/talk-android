@@ -8,9 +8,11 @@
  * SPDX-FileCopyrightText: 2017-2019 Mario Danic <mario@lovelyhq.com>
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
+
 import com.github.spotbugs.snom.Confidence
 import com.github.spotbugs.snom.Effort
 import com.github.spotbugs.snom.SpotBugsTask
+import groovy.json.JsonSlurper
 
 plugins {
     id "org.jetbrains.kotlin.plugin.compose" version "2.2.20"
@@ -28,8 +30,6 @@ apply plugin: 'io.gitlab.arturbosch.detekt'
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 apply plugin: 'kotlinx-serialization'
 
-
-import groovy.json.JsonSlurper
 ext {
     dynamicConfig = null
 }
@@ -47,7 +47,7 @@ if (project.hasProperty("CONFIG_FILE")) {
 } else {
     println ">>> No CONFIG_FILE passed. Using default config."
 }
-
+def isBrandingVersion = project.ext.dynamicConfig?.isBrandingVersion ?: false
 android {
     compileSdkVersion 35
     compileSdk 35
@@ -60,10 +60,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         def config = project.ext.dynamicConfig
         if (config != null) {
-            applicationId config.applicationId
+            applicationId(config.applicationId ?: "com.nextcloud.talk2")
             buildConfigField "String", "BASE_URL", "\"${config.baseUrl}\""
             buildConfigField "String", "APP_NAME", "\"${config.appName}\""
-            buildConfigField "String", "PUSH_TOKEN", "\"${config.pushToken}\""
+            buildConfigField "String", "PUSH_TOKEN", "\"${config.pushToken ?: ""}\""
+            buildConfigField "Boolean", "IS_BRANDING_VERSION", "${config.isBrandingVersion}"
         }
         // mayor.minor.hotfix.increment (for increment: 01-50=Alpha / 51-89=RC / 90-99=stable)
         // xx   .xxx  .xx    .xx
@@ -183,7 +184,7 @@ android {
 
     lint {
         abortOnError = false
-        disable 'MissingTranslation','PrivateResource'
+        disable 'MissingTranslation', 'PrivateResource'
         htmlOutput = layout.buildDirectory.file("reports/lint/lint.html").get().asFile
         htmlReport = true
     }
@@ -252,35 +253,104 @@ android.applicationVariants.all { variant ->
 android.applicationVariants.all { variant ->
     def variantName = variant.name
     def capitalizedVariantName = variantName.capitalize()
-
-    tasks.named("process${capitalizedVariantName}GoogleServices").configure { task ->
-        task.doFirst {
-            def cfg = project.ext.dynamicConfig
-            if (cfg == null) {
-                throw new GradleException(">>> CONFIG_FILE not loaded for ${variantName}")
-            }
-
-            if (!cfg.containsKey("googleServices")) {
-                throw new GradleException(">>> Missing 'googleServices' in config.json for ${variantName}")
-            }
-
-            def srcFile = file("$projectDir/google-services/${cfg.googleServices}")
-
-            def destFile = file("$projectDir/google-services.json")
-
-            if (srcFile.exists()) {
-                println ">>> Copying ${srcFile.name} for ${variantName}"
-                copy {
-                    from srcFile
-                    into projectDir
-                    rename { "google-services.json" }
+    if(!isBrandingVersion) {
+        tasks.named("process${capitalizedVariantName}GoogleServices").configure { task ->
+            task.doFirst {
+                def cfg = project.ext.dynamicConfig
+                if (cfg == null) {
+                    throw new GradleException(">>> CONFIG_FILE not loaded for ${variantName}")
                 }
-            } else {
-                throw new GradleException(">>> File not found: ${srcFile.absolutePath}")
+                if (cfg.getOrDefault("isBrandingVersion", false)) {
+                    println ">>> this version wants to use branding version"
+                    return
+                }
+                if (!cfg.containsKey("googleServices")) {
+                    throw new GradleException(">>> Missing 'googleServices' in config.json for ${variantName}")
+                }
+
+                def srcFile = file("$projectDir/google-services/${cfg.googleServices}")
+
+                def destFile = file("$projectDir/google-services.json")
+
+                if (srcFile.exists()) {
+                    println ">>> Copying ${srcFile.name} for ${variantName}"
+                    copy {
+                        from srcFile
+                        into projectDir
+                        rename { "google-services.json" }
+                    }
+                } else {
+                    throw new GradleException(">>> File not found: ${srcFile.absolutePath}")
+                }
             }
         }
     }
 }
+android.applicationVariants.all { variant ->
+    def variantName = variant.name
+    def capitalizedVariantName = variantName.capitalize()
+
+    def processStringsTask = tasks.register("process${capitalizedVariantName}UpdateStrings") {
+        doLast {
+            def config = project.ext.dynamicConfig
+            if (config == null) {
+                println ">>> No 'dynamicConfig' defined for ${variantName}"
+                return
+            }
+
+            // پیدا کردن همه strings.xml ها در تمام values و values-xx
+            fileTree("src/main/res").matching {
+                include "values*/strings.xml"
+            }.each { file ->
+                def text = file.getText("UTF-8")
+                // فقط مقادیر b67a رو جایگزین کن
+                text = text.replaceAll("Talk", "${config.appName}")
+                file.write(text, "UTF-8")
+                println ">>> replaced ${variantName} with appName=${config.appName}"
+            }
+
+            println ">>> Updated strings.xml for ${variantName} with appName=${config.appName}"
+        }
+    }
+
+    // قبل از preBuild اجرا میشه تا تغییرات merge بشه
+    tasks.named("pre${capitalizedVariantName}Build").configure { dependsOn processStringsTask }
+}
+
+android.applicationVariants.all { variant ->
+    def variantName = variant.name
+    def capitalizedVariantName = variantName.capitalize()
+
+    def processStringsTask = tasks.register("process${capitalizedVariantName}UpdateSetup") {
+        doLast {
+            def config = project.ext.dynamicConfig
+            if (config == null) {
+                println ">>> No 'dynamicConfig' defined for ${variantName}"
+                return
+            }
+
+            // پیدا کردن همه strings.xml ها در تمام values و values-xx
+            fileTree("src/main/res").matching {
+                include "values/setup.xml"
+            }.each { file ->
+                def text = file.getText("UTF-8")
+                // فقط مقادیر b67a رو جایگزین کن
+                text = text.replaceAll("Nextcloud Talk", "${config.appName}")
+                text = text.replaceAll("Nextcloud", "${config.appName}")
+                text = text.replaceAll("Talk", "${config.appName}")
+                file.write(text, "UTF-8")
+                println ">>> replaced ${variantName} with appName=${config.appName}"
+            }
+
+            println ">>> Updated strings.xml for ${variantName} with appName=${config.appName}"
+        }
+    }
+
+    // قبل از preBuild اجرا میشه تا تغییرات merge بشه
+    tasks.named("pre${capitalizedVariantName}Build").configure { dependsOn processStringsTask }
+}
+
+
 android.applicationVariants.all { variant ->
     variant.outputs.all { output ->
         def cfg = project.ext.dynamicConfig
@@ -320,7 +390,7 @@ dependencies {
     implementation 'androidx.datastore:datastore-core:1.1.7'
     implementation 'androidx.datastore:datastore-preferences:1.1.7'
     implementation 'androidx.test.ext:junit-ktx:1.3.0'
-	
+
     implementation fileTree(include: ['*'], dir: 'libs')
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
@@ -338,8 +408,8 @@ dependencies {
     implementation "androidx.work:work-rxjava2:${workVersion}"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
-    implementation ('com.github.bitfireAT:dav4jvm:2.1.3', {
-        exclude group: 'org.ogce', module: 'xpp3'	// Android comes with its own XmlPullParser
+    implementation('com.github.bitfireAT:dav4jvm:2.1.3', {
+        exclude group: 'org.ogce', module: 'xpp3'    // Android comes with its own XmlPullParser
     })
     implementation 'org.conscrypt:conscrypt-android:2.5.3'
     implementation "com.github.nextcloud-deps:qrcodescanner:0.1.2.4" // "com.github.blikoon:QRCodeScanner:0.1.2"
@@ -429,7 +499,7 @@ dependencies {
     implementation 'com.github.nextcloud-deps:ImagePicker:2.1.0.2'
     implementation 'io.github.elye:loaderviewlibrary:3.0.0'
     implementation 'org.osmdroid:osmdroid-android:6.1.20'
-    implementation ('fr.dudie:nominatim-api:3.4', {
+    implementation('fr.dudie:nominatim-api:3.4', {
         //noinspection DuplicatePlatformClasses
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     })
@@ -438,10 +508,10 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.10.1'
     implementation 'com.github.nextcloud.android-common:ui:0.28.0'
     implementation 'com.github.nextcloud-deps:android-talk-webrtc:132.6834.0'
-
-    implementation 'com.google.android.gms:play-services-base:18.8.0'
-    implementation "com.google.firebase:firebase-messaging:25.0.1"
-
+//    if (!isBrandingVersion) {
+        implementation 'com.google.android.gms:play-services-base:18.8.0'
+        implementation "com.google.firebase:firebase-messaging:25.0.1"
+//    }
     //compose
     implementation(platform("androidx.compose:compose-bom:2025.09.00"))
     implementation("androidx.compose.ui:ui")
@@ -466,7 +536,7 @@ dependencies {
     androidTestImplementation 'org.mockito:mockito-android:5.20.0'
     androidTestImplementation "androidx.work:work-testing:${workVersion}"
     // Espresso core
-    androidTestImplementation ("androidx.test.espresso:espresso-core:$espressoVersion", {
+    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
@@ -513,7 +583,7 @@ tasks.withType(SpotBugsTask).configureEach { task ->
     dependsOn "compile${variantNameCap}Sources"
 
     excludeFilter = file("${project.rootDir}/spotbugs-filter.xml")
-    classes = fileTree(layout.buildDirectory.get().asFile.toString()+"/intermediates/javac/${variantName}/compile${variantNameCap}JavaWithJavac/classes/")
+    classes = fileTree(layout.buildDirectory.get().asFile.toString() + "/intermediates/javac/${variantName}/compile${variantNameCap}JavaWithJavac/classes/")
     reports {
         xml {
             required = true
@@ -544,5 +614,6 @@ detekt {
 ksp {
     arg('room.schemaLocation', "$projectDir/schemas")
 }
-
-apply plugin: 'com.google.gms.google-services'
+if (!isBrandingVersion) {
+    apply plugin: 'com.google.gms.google-services'
+}

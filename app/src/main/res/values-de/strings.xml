@@ -232,7 +232,7 @@
     <string name="nc_diagnose_notification_messages_channel_permission">Nachrichtenbenachrichtigungskanal aktiviert?</string>
     <string name="nc_diagnose_notification_permission">Benachrichtigungsberechtigungen</string>
     <string name="nc_diagnose_phone_category_title">Telefon</string>
-    <string name="nc_diagnose_server_talk_version">Serverversion von b67a</string>
+    <string name="nc_diagnose_server_talk_version">Serverversion von Talk</string>
     <string name="nc_diagnose_server_version">Serverversion</string>
     <string name="nc_diagnose_signaling_mode_extern">Extern</string>
     <string name="nc_diagnose_signaling_mode_intern">Intern</string>
@@ -445,7 +445,7 @@
     <string name="nc_server_maintenance">Bitte den Wartungsmodus von %1$s beenden</string>
     <string name="nc_server_not_installed">Bitte beenden Sie Ihre %1$s Installation</string>
     <string name="nc_server_testing_connection">Teste Verbindung </string>
-    <string name="nc_server_unsupported">Auf dem Server ist keine unterstützte b67a-App installiert</string>
+    <string name="nc_server_unsupported">Auf dem Server ist keine unterstützte Talk-App installiert</string>
     <string name="nc_server_url">Serveradresse https://…</string>
     <string name="nc_server_version">%1$s funktioniert nur mit %2$s 13 und höher</string>
     <string name="nc_set_new_password">Neues Passwort setzen</string>
@@ -461,14 +461,12 @@
     <string name="nc_settings_incognito_keyboard_desc">Weist die Tastatur an, das personalisierte Lernen zu deaktivieren (ohne Garantien)</string>
     <string name="nc_settings_incognito_keyboard_title">Inkognito-Tastatur</string>
     <string name="nc_settings_no_ringtone">Kein Ton</string>
-    <string name="nc_settings_no_talk_installed">Die b67a-App ist nicht auf dem Server installiert, auf dem Sie
-        versucht haben sich zu authentisieren</string>
+    <string name="nc_settings_no_talk_installed">Die Talk-App ist nicht auf dem Server installiert, auf dem Sie versucht haben sich zu authentisieren</string>
     <string name="nc_settings_notification_sounds_post_oreo">Benachrichtigungen</string>
     <string name="nc_settings_notifications_declined">Benachrichtigungen werden abgelehnt</string>
     <string name="nc_settings_notifications_granted">Benachrichtigungen werden gewährt</string>
     <string name="nc_settings_other_notifications_ringtone">Nachrichten</string>
-    <string name="nc_settings_phone_book_integration_desc">Abgleich von Kontakten basierend auf der Telefonnummer zur
-        Integration der b67a-Verknüpfung im Telefonbuch</string>
+    <string name="nc_settings_phone_book_integration_desc">Abgleich von Kontakten basierend auf der Telefonnummer zur Integration der Talk-Verknüpfung im Telefonbuch</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_429">Fehler 429: Zu viele Anfragen</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">Sie können Ihre Telefonnummer so einstellen, dass andere Benutzer Sie finden können.</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">Telefonnummer eingeben</string>
@@ -547,7 +545,7 @@
     <string name="nc_upload_video_from_cam">Video aufnehmen</string>
     <string name="nc_user">Benutzer</string>
     <string name="nc_video_filename">Videoaufnahme von %1$s</string>
-    <string name="nc_voice_message_filename">b67a-Aufnahme von %1$s (%2$s)</string>
+    <string name="nc_voice_message_filename">Talk-Aufnahme von %1$s (%2$s)</string>
     <string name="nc_voice_message_hold_to_record_info">Halten zum Aufnehmen, zum Versenden loslassen.</string>
     <string name="nc_voice_message_missing_audio_permission">Erlaubnis für Audioaufnahmen ist erforderlich</string>
     <string name="nc_voice_message_slide_to_cancel">« Schieben zum Abbrechen</string>
@@ -619,8 +617,7 @@
     <string name="scope_federated_title">Federated</string>
     <string name="scope_local_description">Nur für Personen dieser Instanz und Gäste sichtbar</string>
     <string name="scope_local_title">Lokal</string>
-    <string name="scope_private_description">Nur sichtbar für Personen, die über die Rufnummernintegration von b67a
-        auf Mobiltelefonen abgeglichen wurden.</string>
+    <string name="scope_private_description">Nur sichtbar für Personen, die über die Rufnummernintegration von Talk auf Mobiltelefonen abgeglichen wurden.</string>
     <string name="scope_private_title">Privat</string>
     <string name="scope_published_description">Mit vertrauenswürdigen Servern und dem globalen sowie öffentlichen Adressbuch synchronisieren</string>
     <string name="scope_published_title">Veröffentlicht</string>

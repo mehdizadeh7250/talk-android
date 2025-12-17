@@ -65,7 +65,7 @@
     <string name="failed_to_save">Nepodařilo se uložit %1$s</string>
     <string name="fifteenMinutes">15 minut</string>
     <string name="file_list_folder">složka</string>
-    <string name="file_list_loading">Načítání…</string>
+    <string name="file_list_loading">Načítání …</string>
     <string name="filename_progress">%1$s (%2$d)</string>
     <string name="fourHours">4 hodiny</string>
     <string name="get_invitations_error">Nepodařilo se získat čekající pozvání</string>
@@ -101,8 +101,8 @@
     <string name="message_last_edited_by">Upraveno %1$s</string>
     <string name="message_poll_tap_to_open">Klepnutím anketu otevřete</string>
     <string name="message_search_begin_empty">Nic nenalezeno</string>
-    <string name="message_search_begin_typing">Hledejte psaním…</string>
-    <string name="message_search_hint">Hledat…</string>
+    <string name="message_search_begin_typing">Hledejte psaním …</string>
+    <string name="message_search_hint">Hledat …</string>
     <string name="messages">Zprávy</string>
     <string name="mute_all_notifications">Ztlumit veškerá upozornění</string>
     <string name="nc_Server_account_imported">Zvolený účet byl naimportován a je k dispozici</string>
@@ -134,7 +134,7 @@
     <string name="nc_call_ongoing_notification_content">Klepnutím se vrátíte k hovoru.</string>
     <string name="nc_call_ongoing_notification_default_title">Probíhá hovor</string>
     <string name="nc_call_raised_hand">%1$s se hlásí</string>
-    <string name="nc_call_reconnecting">Znovunavazování spojení…</string>
+    <string name="nc_call_reconnecting">Znovunavazování spojení …</string>
     <string name="nc_call_ringing">ZVONĚNÍ</string>
     <string name="nc_call_state_in_call">%1$s má hovor</string>
     <string name="nc_call_state_with_phone">%1$s přes telefon</string>
@@ -171,7 +171,7 @@
     <string name="nc_common_skip">Přeskočit</string>
     <string name="nc_common_unknown">Neznámé</string>
     <string name="nc_configure_cert_auth">Vyberte certifikát pro ověřování se</string>
-    <string name="nc_connecting_call">Připojování…</string>
+    <string name="nc_connecting_call">Připojování …</string>
     <string name="nc_contacts_done">Hotovo</string>
     <string name="nc_conversation_description">Popis konverzace</string>
     <string name="nc_conversation_menu_conversation_info">Informace o konverzaci</string>
@@ -232,7 +232,7 @@
     <string name="nc_diagnose_notification_messages_channel_permission">Kanál upozorňování na zprávy zapnut?</string>
     <string name="nc_diagnose_notification_permission">Oprávnění upozornění</string>
     <string name="nc_diagnose_phone_category_title">Telefon</string>
-    <string name="nc_diagnose_server_talk_version">Verze b67a na serveru</string>
+    <string name="nc_diagnose_server_talk_version">Verze Talk na serveru</string>
     <string name="nc_diagnose_server_version">Verze serveru</string>
     <string name="nc_diagnose_signaling_mode_extern">Externí</string>
     <string name="nc_diagnose_signaling_mode_intern">Vnitřní</string>
@@ -276,7 +276,7 @@
     <string name="nc_following_link">Uživatel následující veřejný odkaz</string>
     <string name="nc_formatted_message_you">Vy: %1$s</string>
     <string name="nc_forward_message">Přeposlat</string>
-    <string name="nc_forward_to_three_dots">Přeposlat na…</string>
+    <string name="nc_forward_to_three_dots">Přeposlat na …</string>
     <string name="nc_gallery">Galerie</string>
     <string name="nc_get_from_provider">Nemáte ještě server?\nKlepnutím sem ho získejte od poskytovatele</string>
     <string name="nc_get_source_code">Získat zdrojové kódy</string>
@@ -295,7 +295,7 @@
     <string name="nc_guest_access_resend_invitations_failed">Pozvánka nebyla odeslána kvůli chybě.</string>
     <string name="nc_guest_access_resend_invitations_successful">Pozvánky byly znovu odeslány.</string>
     <string name="nc_guest_access_share_link">Sdílet odkaz na konverzaci</string>
-    <string name="nc_hint_enter_a_message">Zadejte zprávu…</string>
+    <string name="nc_hint_enter_a_message">Zadejte zprávu …</string>
     <string name="nc_ignore_battery_optimization_dialog_text">Úspora energie z akumulátoru není ignorována. Pokud chcete, aby upozorňování na pozadí fungovalo správně, mělo by toto být změněno! Klikněte na OK a vyberte „Všechny aplikace“ -> %1$s a pak „Neoptimalizovat“ nebo „Umožnit používání na pozadí“ -> Neomezené</string>
     <string name="nc_ignore_battery_optimization_dialog_title">Ignorovat úsporu energie z akumulátoru</string>
     <string name="nc_important_conversation">Důležitá konverzace</string>
@@ -307,7 +307,7 @@
     <string name="nc_last_moderator_leaving_room_warning">Než budete moci konverzaci opustit, je třeba předat někomu roli moderátora</string>
     <string name="nc_last_modified">%1$s | Naposledy upraveno: %2$s</string>
     <string name="nc_leave">Opustit konverzaci</string>
-    <string name="nc_leaving_call">Opouštění hovoru…</string>
+    <string name="nc_leaving_call">Opouštění hovoru …</string>
     <string name="nc_license_summary">GNU General Public License, verze 3</string>
     <string name="nc_license_title">Licence</string>
     <string name="nc_limit_hit">byl dosažen limit %s znaků</string>
@@ -445,7 +445,7 @@
     <string name="nc_server_maintenance">Přepněte svůj %1$s zpět z režimu údržby</string>
     <string name="nc_server_not_installed">Dokončete instalaci %1$s</string>
     <string name="nc_server_testing_connection">Zkouší se připojení</string>
-    <string name="nc_server_unsupported">Na serveru není nainstalovaná podporovaná verze aplikace b67a</string>
+    <string name="nc_server_unsupported">Na serveru není nainstalovaná podporovaná verze aplikace Talk</string>
     <string name="nc_server_url">Adresa serveru https://…</string>
     <string name="nc_server_version">%1$s funguje pouze s %2$s 13 a novějším</string>
     <string name="nc_set_new_password">Nastavit nové heslo</string>
@@ -461,14 +461,12 @@
     <string name="nc_settings_incognito_keyboard_desc">Dát klávesnici pokyn, že má vypnout přizpůsobené učení se (bez záruky)</string>
     <string name="nc_settings_incognito_keyboard_title">Inkognito klávesnice</string>
     <string name="nc_settings_no_ringtone">Žádný zvuk</string>
-    <string name="nc_settings_no_talk_installed">Aplikace b67a není na serveru, vůči kterému jste se pokusili ověřit,
-        vůbec nainstalována</string>
+    <string name="nc_settings_no_talk_installed">Aplikace Talk není na serveru, vůči kterému jste se pokusili ověřit, vůbec nainstalována</string>
     <string name="nc_settings_notification_sounds_post_oreo">Upozornění</string>
     <string name="nc_settings_notifications_declined">Upozorňování jsou odmítnuta</string>
     <string name="nc_settings_notifications_granted">Upozorňování jsou udělena</string>
     <string name="nc_settings_other_notifications_ringtone">Zprávy</string>
-    <string name="nc_settings_phone_book_integration_desc">Najít kontakty se stejným telefonním číslem a přidat
-        zkratku b67a do systémové aplikace pro kontakty</string>
+    <string name="nc_settings_phone_book_integration_desc">Najít kontakty se stejným telefonním číslem a přidat zkratku Talk do systémové aplikace pro kontakty</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_429">Chyba 429 – příliš mnoho požadavků</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_description">Můžete si nastavit své telefonní číslo a tak vás budou moci ostatní uživatelé najít</string>
     <string name="nc_settings_phone_book_integration_phone_number_dialog_edit_text_hint">Zadejte telefonní číslo</string>
@@ -518,7 +516,7 @@
     <string name="nc_share_to_choose_account">Zvolte účet</string>
     <string name="nc_shared_items">Sdílené položky</string>
     <string name="nc_shared_items_deck_card">Karta aplikace Deck</string>
-    <string name="nc_shared_items_description">Obrázky, soubory, hlasové zprávy…</string>
+    <string name="nc_shared_items_description">Obrázky, soubory, hlasové zprávy …</string>
     <string name="nc_shared_items_empty">Žádné sdílené položky</string>
     <string name="nc_shared_items_location">Poloha</string>
     <string name="nc_shared_location">Sdílené umístění</string>
@@ -547,7 +545,7 @@
     <string name="nc_upload_video_from_cam">Natočit video</string>
     <string name="nc_user">Uživatel</string>
     <string name="nc_video_filename">Videozáznam z %1$s</string>
-    <string name="nc_voice_message_filename">Nahrávka z b67a z %1$s (%2$s)</string>
+    <string name="nc_voice_message_filename">Nahrávka z Talk z %1$s (%2$s)</string>
     <string name="nc_voice_message_hold_to_record_info">Podržením nahrajte, uvolněním odešlete.</string>
     <string name="nc_voice_message_missing_audio_permission">Je zapotřebí oprávnění pro zaznamenávání zvuku</string>
     <string name="nc_voice_message_slide_to_cancel">« Zrušíte přejetím prstem</string>
@@ -571,6 +569,7 @@
     <string name="open_thread">Přejít na vlákno</string>
     <string name="play_pause_voice_message">Přehrát/pozastavit hlasovou zprávu</string>
     <string name="playback_speed_control">Ovládání rychlosti přehrávání</string>
+    <string name="please_continue_the_login_process_in_the_browser">Pokračujte v přihlášení ve webovém prohlížeči</string>
     <string name="polls_add_option">Přidat volbu</string>
     <string name="polls_edit_vote">Upravit hlas</string>
     <string name="polls_end_poll">Ukončit anketu</string>
@@ -618,8 +617,7 @@
     <string name="scope_federated_title">Propojené</string>
     <string name="scope_local_description">Viditelné pouze lidem na této instanci a hostům</string>
     <string name="scope_local_title">Místní</string>
-    <string name="scope_private_description">Viditelné pouze lidem, se kterými nalezena shoda začleněním přes
-        telefonní číslo prostřednictvím b67a na mobilním telefonu</string>
+    <string name="scope_private_description">Viditelné pouze lidem, se kterými nalezena shoda začleněním přes telefonní číslo prostřednictvím Talk na mobilním telefonu</string>
     <string name="scope_private_title">Soukromé</string>
     <string name="scope_published_description">Synchronizovat s důvěryhodnými servery a globálním a veřejným adresářem kontaktů</string>
     <string name="scope_published_title">Zveřejněno</string>
@@ -632,7 +630,7 @@
     <string name="send_email">Odeslat e-mail</string>
     <string name="send_to">Odeslat k</string>
     <string name="send_to_forbidden">Nemáte oprávnění sdílet obsah do tohoto chatu</string>
-    <string name="send_to_three_dots">Odeslat k…</string>
+    <string name="send_to_three_dots">Odeslat k …</string>
     <string name="send_without_notification">Odeslat bez upozornění</string>
     <string name="set">Nastavit</string>
     <string name="set_avatar_from_camera">Získat zástupný obrázek z kamery</string>
@@ -689,10 +687,10 @@
     <string name="translation_to">Pro</string>
     <string name="turn_off_background_blur">Vypnout rozmazávání pozadí za vámi</string>
     <string name="turn_on_background_blur">Zapnout rozmazávání pozadí za vámi</string>
-    <string name="typing_1_other">a 1 další píše…</string>
-    <string name="typing_are_typing">píší…</string>
-    <string name="typing_is_typing">píše…</string>
-    <string name="typing_x_others">a %1$s ostatní píší…</string>
+    <string name="typing_1_other">a 1 další píše …</string>
+    <string name="typing_are_typing">píší …</string>
+    <string name="typing_is_typing">píše …</string>
+    <string name="typing_x_others">a %1$s ostatní píší …</string>
     <string name="unarchive_conversation">Zrušit archivaci konverzace</string>
     <string name="unarchive_hint">Jakmile je zrušeno archivování konverzace, znovu bude zobrazováná už ve výchozí stavu.</string>
     <string name="unarchived_conversation">Zrušena archivace %1$s</string>
