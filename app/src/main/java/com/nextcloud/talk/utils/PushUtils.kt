@@ -246,16 +246,11 @@ class PushUtils {
                     proxyMap["deviceIdentifier"] = pushRegistrationOverall.ocs!!.data!!.deviceIdentifier
                     proxyMap["deviceIdentifierSignature"] = pushRegistrationOverall.ocs!!.data!!.signature
                     proxyMap["userPublicKey"] = pushRegistrationOverall.ocs!!.data!!.publicKey
-                    if (!BuildConfig.IS_BRANDING_VERSION)
                         registerDeviceWithPushProxy(ncApi, user)
-                    else
-                        registerDeviceWithPushProxy(ncApi, proxyMap, user)
                 }
 
                 override fun onError(e: Throwable) {
                     Log.e(TAG, "Failed to register device with nextcloud", e)
-                    if (!BuildConfig.IS_BRANDING_VERSION)
-                        registerDeviceWithPushProxy(ncApi, user)
                     eventBus!!.post(EventStatus(user.id!!, EventStatus.EventType.PUSH_REGISTRATION, false))
                 }
 

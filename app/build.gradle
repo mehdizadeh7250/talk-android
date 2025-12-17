@@ -64,12 +64,11 @@ android {
             buildConfigField "String", "BASE_URL", "\"${config.baseUrl}\""
             buildConfigField "String", "APP_NAME", "\"${config.appName}\""
             buildConfigField "String", "PUSH_TOKEN", "\"${config.pushToken ?: ""}\""
-            buildConfigField "Boolean", "IS_BRANDING_VERSION", "${config.isBrandingVersion}"
         }
         // mayor.minor.hotfix.increment (for increment: 01-50=Alpha / 51-89=RC / 90-99=stable)
         // xx   .xxx  .xx    .xx
-        versionCode 230000015
-        versionName "23.0.0 Alpha 15"
+        versionCode 220000002
+        versionName "22.0.2"
 
         flavorDimensions "default"
         renderscriptTargetApi = 19
@@ -253,35 +252,33 @@ android.applicationVariants.all { variant ->
 android.applicationVariants.all { variant ->
     def variantName = variant.name
     def capitalizedVariantName = variantName.capitalize()
-    if(!isBrandingVersion) {
-        tasks.named("process${capitalizedVariantName}GoogleServices").configure { task ->
-            task.doFirst {
-                def cfg = project.ext.dynamicConfig
-                if (cfg == null) {
-                    throw new GradleException(">>> CONFIG_FILE not loaded for ${variantName}")
-                }
-                if (cfg.getOrDefault("isBrandingVersion", false)) {
-                    println ">>> this version wants to use branding version"
-                    return
-                }
-                if (!cfg.containsKey("googleServices")) {
-                    throw new GradleException(">>> Missing 'googleServices' in config.json for ${variantName}")
-                }
+    tasks.named("process${capitalizedVariantName}GoogleServices").configure { task ->
+        task.doFirst {
+            def cfg = project.ext.dynamicConfig
+            if (cfg == null) {
+                throw new GradleException(">>> CONFIG_FILE not loaded for ${variantName}")
+            }
+            if (cfg.getOrDefault("isBrandingVersion", false)) {
+                println ">>> this version wants to use branding version"
+                return
+            }
+            if (!cfg.containsKey("googleServices")) {
+                throw new GradleException(">>> Missing 'googleServices' in config.json for ${variantName}")
+            }
 
-                def srcFile = file("$projectDir/google-services/${cfg.googleServices}")
+            def srcFile = file("$projectDir/google-services/${cfg.googleServices}")
 
-                def destFile = file("$projectDir/google-services.json")
+            def destFile = file("$projectDir/google-services.json")
 
-                if (srcFile.exists()) {
-                    println ">>> Copying ${srcFile.name} for ${variantName}"
-                    copy {
-                        from srcFile
-                        into projectDir
-                        rename { "google-services.json" }
-                    }
-                } else {
-                    throw new GradleException(">>> File not found: ${srcFile.absolutePath}")
+            if (srcFile.exists()) {
+                println ">>> Copying ${srcFile.name} for ${variantName}"
+                copy {
+                    from srcFile
+                    into projectDir
+                    rename { "google-services.json" }
                 }
+            } else {
+                throw new GradleException(">>> File not found: ${srcFile.absolutePath}")
             }
         }
     }
@@ -304,6 +301,8 @@ android.applicationVariants.all { variant ->
             }.each { file ->
                 def text = file.getText("UTF-8")
                 // فقط مقادیر b67a رو جایگزین کن
+                text = text.replaceAll("Nextcloud Talk", "${config.appName}")
+                text = text.replaceAll("Nextcloud", "${config.appName}")
                 text = text.replaceAll("Talk", "${config.appName}")
                 file.write(text, "UTF-8")
                 println ">>> replaced ${variantName} with appName=${config.appName}"
@@ -509,8 +508,8 @@ dependencies {
     implementation 'com.github.nextcloud.android-common:ui:0.28.0'
     implementation 'com.github.nextcloud-deps:android-talk-webrtc:132.6834.0'
 //    if (!isBrandingVersion) {
-        implementation 'com.google.android.gms:play-services-base:18.8.0'
-        implementation "com.google.firebase:firebase-messaging:25.0.1"
+    implementation 'com.google.android.gms:play-services-base:18.8.0'
+    implementation "com.google.firebase:firebase-messaging:25.0.1"
 //    }
     //compose
     implementation(platform("androidx.compose:compose-bom:2025.09.00"))
@@ -614,6 +613,4 @@ detekt {
 ksp {
     arg('room.schemaLocation', "$projectDir/schemas")
 }
-if (!isBrandingVersion) {
-    apply plugin: 'com.google.gms.google-services'
-}
+apply plugin: 'com.google.gms.google-services'

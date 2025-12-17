@@ -176,7 +176,7 @@ class SettingsActivity :
         setupPrivacyUrl(isOnline.value)
         setupSourceCodeUrl(isOnline.value)
 
-        binding.settingsVersionSummary.text = String.format("v" + BuildConfig.VERSION_NAME)
+        // binding.settingsVersionSummary.text = String.format("v" + BuildConfig.VERSION_NAME)
 
         setupPhoneBookIntegration(isOnline.value)
 
@@ -205,9 +205,9 @@ class SettingsActivity :
 
         loadCapabilitiesAndUpdateSettings(isOnline.value)
 
-        binding.settingsVersion.setOnClickListener {
-            sendLogs()
-        }
+        // binding.settingsVersion.setOnClickListener {
+        //     sendLogs()
+        // }
 
         if (!TextUtils.isEmpty(currentUser!!.clientCertificate)) {
             binding.settingsClientCertTitle.setText(R.string.nc_client_cert_change)
@@ -523,58 +523,58 @@ class SettingsActivity :
     }
 
     private fun setupSourceCodeUrl(isOnline: Boolean) {
-        if (!TextUtils.isEmpty(resources!!.getString(R.string.nc_source_code_url)) && isOnline) {
-            binding.settingsSourceCode.visibility = View.VISIBLE
-            binding.settingsSourceCode.setOnClickListener {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        resources!!.getString(R.string.nc_source_code_url).toUri()
-                    )
-                )
-            }
-        } else {
-            binding.settingsSourceCode.visibility = View.GONE
-        }
+        // if (!TextUtils.isEmpty(resources!!.getString(R.string.nc_source_code_url)) && isOnline) {
+        //     binding.settingsSourceCode.visibility = View.VISIBLE
+        //     binding.settingsSourceCode.setOnClickListener {
+        //         startActivity(
+        //             Intent(
+        //                 Intent.ACTION_VIEW,
+        //                 resources!!.getString(R.string.nc_source_code_url).toUri()
+        //             )
+        //         )
+        //     }
+        // } else {
+        //     binding.settingsSourceCode.visibility = View.GONE
+        // }
     }
 
     private fun setupDiagnose() {
-        binding.diagnoseWrapper.setOnClickListener {
-            val intent = Intent(context, DiagnoseActivity::class.java)
-            startActivity(intent)
-        }
+        // binding.diagnoseWrapper.setOnClickListener {
+        //     val intent = Intent(context, DiagnoseActivity::class.java)
+        //     startActivity(intent)
+        // }
     }
 
     private fun setupPrivacyUrl(isOnline: Boolean) {
-        if (!TextUtils.isEmpty(resources!!.getString(R.string.nc_privacy_url)) && isOnline) {
-            binding.settingsPrivacy.visibility = View.VISIBLE
-            binding.settingsPrivacy.setOnClickListener {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        resources!!.getString(R.string.nc_privacy_url).toUri()
-                    )
-                )
-            }
-        } else {
-            binding.settingsPrivacy.visibility = View.GONE
-        }
+        // if (!TextUtils.isEmpty(resources!!.getString(R.string.nc_privacy_url)) && isOnline) {
+        //     binding.settingsPrivacy.visibility = View.VISIBLE
+        //     binding.settingsPrivacy.setOnClickListener {
+        //         startActivity(
+        //             Intent(
+        //                 Intent.ACTION_VIEW,
+        //                 resources!!.getString(R.string.nc_privacy_url).toUri()
+        //             )
+        //         )
+        //     }
+        // } else {
+        //     binding.settingsPrivacy.visibility = View.GONE
+        // }
     }
 
     private fun setupLicenceSetting(isOnline: Boolean) {
-        if (!TextUtils.isEmpty(resources!!.getString(R.string.nc_gpl3_url)) && isOnline) {
-            binding.settingsLicence.visibility = View.VISIBLE
-            binding.settingsLicence.setOnClickListener {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        resources!!.getString(R.string.nc_gpl3_url).toUri()
-                    )
-                )
-            }
-        } else {
-            binding.settingsLicence.visibility = View.GONE
-        }
+        // if (!TextUtils.isEmpty(resources!!.getString(R.string.nc_gpl3_url)) && isOnline) {
+        //     binding.settingsLicence.visibility = View.VISIBLE
+        //     binding.settingsLicence.setOnClickListener {
+        //         startActivity(
+        //             Intent(
+        //                 Intent.ACTION_VIEW,
+        //                 resources!!.getString(R.string.nc_gpl3_url).toUri()
+        //             )
+        //         )
+        //     }
+        // } else {
+        //     binding.settingsLicence.visibility = View.GONE
+        // }
     }
 
     private fun showSetupClientCertView(isOnline: Boolean) {
@@ -786,7 +786,7 @@ class SettingsActivity :
         binding.run {
             listOf(
                 settingsNotificationsTitle,
-                settingsAboutTitle,
+                // settingsAboutTitle,
                 settingsAdvancedTitle,
                 settingsAppearanceTitle,
                 settingsPrivacyTitle
